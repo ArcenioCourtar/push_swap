@@ -1,0 +1,9 @@
+.DS_Store
+test*
+main*
+checklist.txt
+a.out
+*.o
+.vscode
+*.pdf
+libft.a
