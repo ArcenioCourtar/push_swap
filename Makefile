@@ -2,7 +2,8 @@ CC			:= cc
 LIBFT		:= libft/libft.a
 CFLAGS		:= -Wall -Werror -Wextra
 NAME		:= push_swap
-OBJFILES	:= main.o
+OBJFILES	:= main.o \
+dlist.o
 HEADERFILE	:= push_swap.h
 
 all: $(NAME)
