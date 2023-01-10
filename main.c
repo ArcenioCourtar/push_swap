@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:28:50 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/10 16:13:20 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:07:50 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,32 @@ t_dlist	*fill_list(int argc, char **argv)
 	return (begin);
 }
 
+void	display_list(t_dlist *list)
+{
+	t_dlist	*startlist;
+
+	list = list->prev;
+	startlist = list;
+	while (list->prev != startlist)
+	{
+		ft_printf("%i \n", list->num);
+		list = list->prev;
+	}
+	ft_printf("%i\n\n", list->num);
+}
+
 int	main(int argc, char **argv)
 {
 	t_dlist	*numlist;
-	t_dlist	*startlist;
 
 	numlist = fill_list(argc - 1, argv);
-	startlist = numlist;
-	while (numlist->next != NULL)
-	{
-		ft_printf("n: %i, p: %p, cur: %p, nxt: %p\n", numlist->num, numlist->prev, numlist, numlist->next);
-		numlist = numlist->next;
-	}
-	ft_printf("n: %i, p: %p, cur: %p, nxt: %p\n", numlist->num, numlist->prev, numlist, numlist->next);
-	return (0);
+	display_list(numlist);
+	instr_rot(&numlist);
+	display_list(numlist);
+	instr_rrot(&numlist);
+	display_list(numlist);
+	instr_swap(numlist);
+	display_list(numlist);
 }
+
+// ft_printf("n: %i, p: %p, cur: %p, nxt: %p\n", numlist->num, numlist->prev, numlist, numlist->next);

@@ -3,7 +3,8 @@ LIBFT		:= libft/libft.a
 CFLAGS		:= -Wall -Werror -Wextra
 NAME		:= push_swap
 OBJFILES	:= main.o \
-dlist.o
+			dlist.o \
+			instructions.o
 HEADERFILE	:= push_swap.h
 
 all: $(NAME)
