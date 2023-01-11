@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:28:50 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/11 15:04:32 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:58:03 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,4 @@ int	main(int argc, char **argv)
 	valid_input(argc - 1);
 	list_a = fill_list(argc - 1, argv);
 	list_b = NULL;
-	debug_list_disp(list_a);
-	debug_list_disp(list_b);
-	instr_push(&list_a, &list_b);
-	debug_list_disp(list_a);
-	debug_list_disp(list_b);
-	instr_push(&list_a, &list_b);
-	debug_list_disp(list_a);
-	debug_list_disp(list_b);
-	instr_push(&list_a, &list_b);
-	debug_list_disp(list_a);
-	debug_list_disp(list_b);
 }

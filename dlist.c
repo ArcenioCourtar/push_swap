@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/11 15:03:53 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:48:47 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	dlist_push(t_dlist *list, t_dlist *new)
 	if (list == NULL)
 	{
 		list = new;
+		ft_printf("ey: %p\n", list);
 		return ;
 	}
 	start = list;
