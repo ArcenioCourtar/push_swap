@@ -4,7 +4,8 @@ CFLAGS		:= -Wall -Werror -Wextra
 NAME		:= push_swap
 OBJFILES	:= main.o \
 			dlist.o \
-			instructions.o
+			instructions.o \
+			debug_func.o
 HEADERFILE	:= push_swap.h
 
 all: $(NAME)
@@ -27,3 +28,6 @@ ft_%.o: ft_%.c $(HEADERFILE)
 
 $(LIBFT):
 	$(MAKE) -C libft
+
+fsanitize: $(NAME)
+	cc $(CFLAGS) $(OBJFILES) $(LIBFT) -fsanitize=address -o $(NAME)

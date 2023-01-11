@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/10 18:08:57 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:04:09 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,19 @@ void	instr_swap(t_dlist *list)
 
 void	instr_rot(t_dlist **list)
 {
-	t_dlist	*begin;
-	int		temp;
-
-	begin = *list;
-	while ((*list)->next != begin)
-	{
-		temp = (*list)->next->num;
-		(*list)->next->num = (*list)->num;
-		(*list) = (*list)->next;
-		(*list)->num = temp;
-	}
+	*list = (*list)->prev;
 }
 
 void	instr_rrot(t_dlist **list)
 {
-	t_dlist	*begin;
-	int		temp;
+	*list = (*list)->next;
+}
 
-	begin = *list;
-	while ((*list)->prev != begin)
-	{
-		temp = (*list)->prev->num;
-		(*list)->prev->num = (*list)->num;
-		(*list) = (*list)->prev;
-		(*list)->num = temp;
-	}
+void	instr_push(t_dlist **src, t_dlist **dest)
+{
+	t_dlist	*copy;
+
+	copy = dlist_new((*src)->prev->num);
+	dlist_push(*dest, copy);
+	dlist_pop(src);
 }
