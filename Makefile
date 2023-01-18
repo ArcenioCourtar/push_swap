@@ -5,7 +5,8 @@ NAME		:= push_swap
 OBJFILES	:= main.o \
 			dlist.o \
 			instructions.o \
-			debug_func.o
+			debug_func.o \
+			print_instr.o
 HEADERFILE	:= push_swap.h
 
 all: $(NAME)

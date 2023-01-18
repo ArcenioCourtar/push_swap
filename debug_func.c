@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:30:46 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/11 15:04:50 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:38:34 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	debug_list_disp(t_dlist *list)
 
 	if (list == NULL)
 	{
-		ft_printf("(null)\n");
+		ft_printf("(null)\n\n");
 		return ;
 	}
 	list = list->prev;
