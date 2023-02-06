@@ -4,9 +4,8 @@ CFLAGS		:= -Wall -Werror -Wextra
 NAME		:= push_swap
 OBJFILES	:= main.o \
 			dlist.o \
-			instructions.o \
-			debug_func.o \
-			print_instr.o
+			operations.o \
+			print_oper.o
 HEADERFILE	:= push_swap.h
 
 all: $(NAME)

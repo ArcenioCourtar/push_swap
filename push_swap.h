@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 13:24:19 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 15:27:25 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,20 @@ typedef struct dlist {
 	struct dlist	*prev;
 }	t_dlist;
 
+// initialize a new node of the linked list
 t_dlist	*dlist_new(int num);
-void	dlist_add(t_dlist *list, t_dlist *node);
+// add a node to the linked list
+void	dlist_add(t_dlist **list, t_dlist *new);
+// remove the first element of the node
 void	dlist_pop(t_dlist **list);
+// view the node elements
+void	dlist_view(t_dlist *list);
+// Display the number of node elements
+void	dlist_count(t_dlist *list);
 
-void	instr_select(t_dlist **list_a, t_dlist **list_b, int mode);
-void	print_instr(int mode);
-void	print_instr_push(int mode);
 
-void	debug_list_disp(t_dlist *list);
-void	debug_list_count(t_dlist *list);
+void	oper_select(t_dlist **list_a, t_dlist **list_b, int mode);
+void	print_oper(int mode);
+void	print_oper_push(int mode);
 
 #endif

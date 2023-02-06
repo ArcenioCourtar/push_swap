@@ -6,14 +6,14 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:00:35 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 13:16:12 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 15:27:25 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h> // write, STDOUT_FILENO
 #include "push_swap.h"
 
-void	print_instr(int mode)
+void	print_oper(int mode)
 {
 	static int	twice = 0;
 
@@ -41,7 +41,7 @@ void	print_instr(int mode)
 		twice = 0;
 }
 
-void	print_instr_push(int mode)
+void	print_oper_push(int mode)
 {
 	if (mode == PUSH_A)
 		write(STDOUT_FILENO, "pa\n", 3);

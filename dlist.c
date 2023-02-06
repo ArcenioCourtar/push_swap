@@ -6,12 +6,13 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 13:26:15 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 15:20:40 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
+#include <stdlib.h> // malloc, free
+#include <unistd.h> // write
 
 t_dlist	*dlist_new(int num)
 {
@@ -26,40 +27,72 @@ t_dlist	*dlist_new(int num)
 	return (new);
 }
 
-void	dlist_add(t_dlist *list, t_dlist *new)
+void	dlist_add(t_dlist **list, t_dlist *new)
 {
-	t_dlist	*start;
-
-	if (list == NULL)
+	if (*list == NULL)
 	{
-		list = new;
-		ft_printf("ey: %p\n", list);
+		*list = new;
 		return ;
 	}
-	start = list;
-	list = list->prev;
-	list->next = new;
-	new->prev = list;
-	new->next = start;
-	start->prev = new;
+	new->next = *list;
+	new->prev = (*list)->prev;
+	(*list)->prev = new;
+	new->prev->next = new;
+	*list = new;
 }
 
 void	dlist_pop(t_dlist **list)
 {
-	t_dlist	*head;
+	t_dlist	*old_head;
 
 	if (*list == NULL)
 		return ;
-	if (*list == (*list)->next)
+	old_head = (*list);
+	if ((*list)->next == *list)
 	{
 		free(*list);
 		*list = NULL;
 	}
 	else
 	{
-		head = (*list)->prev;
-		head->prev->next = *list;
-		(*list)->prev = head->prev;
-		free(head);
+		(*list)->next->prev = (*list)->prev;
+		(*list)->prev->next = (*list)->next;
+		*list = (*list)->next;
+		free(old_head);
+	}
+}
+
+void	dlist_view(t_dlist *list)
+{
+	t_dlist	*start;
+
+	if (list == NULL)
+	{
+		write(STDOUT_FILENO, "(null)\n\n", 8);
+		return ;
+	}
+	start = list;
+	while (start != list->next)
+	{
+		ft_printf("%i\n", list->num);
+		list = list->next;
+	}
+	ft_printf("%i\n\n", list->num);
+}
+
+void	dlist_count(t_dlist *list)
+{
+	t_dlist	*start;
+	int		i;
+
+	i = 1;
+	start = list;
+	if (list == NULL)
+		ft_printf("list length: 0\n");
+	else
+	{
+		while (list->next != start)
+			i++;
+		ft_printf("List length: %i\n", i);
 	}
 }

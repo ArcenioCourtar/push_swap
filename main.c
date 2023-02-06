@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:28:50 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 13:24:19 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 15:23:11 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_dlist	*fill_list(int argc, char **argv)
 	while (argc > 0)
 	{
 		current = dlist_new(ft_atoi(argv[argc]));
-		dlist_add(start, current);
+		dlist_add((&start), current);
 		argc--;
 	}
 	return (start);
@@ -44,8 +44,19 @@ int	main(int argc, char **argv)
 	valid_input(argc - 1);
 	list_a = fill_list(argc - 1, argv);
 	list_b = NULL;
-	debug_list_disp(list_a);
-	debug_list_count(list_a);
-	debug_list_disp(list_b);
-	debug_list_count(list_b);
+
+	dlist_view(list_a);
+	dlist_view(list_b);
+	oper_select(&list_a, &list_b, PUSH_B);
+	dlist_view(list_a);
+	dlist_view(list_b);
+	oper_select(&list_a, &list_b, PUSH_B);
+	dlist_view(list_a);
+	dlist_view(list_b);
+	oper_select(&list_a, &list_b, PUSH_B);
+	dlist_view(list_a);
+	dlist_view(list_b);
+	oper_select(&list_a, &list_b, PUSH_B);
+	dlist_view(list_a);
+	dlist_view(list_b);
 }
