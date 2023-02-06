@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/18 15:36:28 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:24:19 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct dlist {
 }	t_dlist;
 
 t_dlist	*dlist_new(int num);
-void	dlist_push(t_dlist *list, t_dlist *node);
+void	dlist_add(t_dlist *list, t_dlist *node);
 void	dlist_pop(t_dlist **list);
 
 void	instr_select(t_dlist **list_a, t_dlist **list_b, int mode);

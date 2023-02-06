@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:30:46 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/18 14:38:34 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:21:40 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ void	debug_list_count(t_dlist *list)
 	t_dlist	*start;
 	int		i;
 
+	if (list == NULL)
+	{
+		ft_printf("List length: 0");
+		return ;
+	}
 	i = 1;
 	start = list;
 	while (list->next != start)

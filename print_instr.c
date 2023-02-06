@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:00:35 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/18 15:39:24 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:16:12 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	print_instr(int mode)
 		write(STDOUT_FILENO, "rra\n", 4);
 	else if (mode == RROT_B)
 		write(STDOUT_FILENO, "rrb\n", 4);
-
 	if ((mode == SWAP_S || mode == ROT_R || mode == RROT_R) && twice == 0)
 		twice = 1;
 	else

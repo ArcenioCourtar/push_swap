@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/11 15:48:47 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:26:15 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_dlist	*dlist_new(int num)
 	return (new);
 }
 
-void	dlist_push(t_dlist *list, t_dlist *new)
+void	dlist_add(t_dlist *list, t_dlist *new)
 {
 	t_dlist	*start;
 

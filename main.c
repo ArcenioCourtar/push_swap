@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:28:50 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/18 15:41:25 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:24:19 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_dlist	*fill_list(int argc, char **argv)
 	while (argc > 0)
 	{
 		current = dlist_new(ft_atoi(argv[argc]));
-		dlist_push(start, current);
+		dlist_add(start, current);
 		argc--;
 	}
 	return (start);
@@ -45,15 +45,7 @@ int	main(int argc, char **argv)
 	list_a = fill_list(argc - 1, argv);
 	list_b = NULL;
 	debug_list_disp(list_a);
-	instr_select(&list_a, &list_b, SWAP_A);
-	instr_select(&list_a, &list_b, SWAP_B);
-	instr_select(&list_a, &list_b, SWAP_S);
-	instr_select(&list_a, &list_b, ROT_A);
-	instr_select(&list_a, &list_b, ROT_B);
-	instr_select(&list_a, &list_b, ROT_R);
-	instr_select(&list_a, &list_b, RROT_A);
-	instr_select(&list_a, &list_b, RROT_B);
-	instr_select(&list_a, &list_b, RROT_R);
-	instr_select(&list_a, &list_b, PUSH_A);
-	instr_select(&list_a, &list_b, PUSH_B);
+	debug_list_count(list_a);
+	debug_list_disp(list_b);
+	debug_list_count(list_b);
 }

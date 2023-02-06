@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/01/18 15:37:04 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:24:19 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	instr_push(t_dlist **src, t_dlist **dest, int mode)
 	if (*dest == NULL)
 		*dest = copy;
 	else
-		dlist_push(*dest, copy);
+		dlist_add(*dest, copy);
 	dlist_pop(src);
 }
 
