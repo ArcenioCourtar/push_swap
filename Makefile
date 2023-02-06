@@ -5,8 +5,10 @@ NAME		:= push_swap
 OBJFILES	:= main.o \
 			dlist.o \
 			operations.o \
-			print_oper.o
-HEADERFILE	:= push_swap.h
+			print_oper.o \
+			input_validation.o
+HEADERFILES	:= push_swap.h \
+			print_oper.h
 
 all: $(NAME)
 
@@ -23,7 +25,7 @@ fclean:
 	$(MAKE) fclean -C libft
 	rm -f $(OBJFILES) $(NAME)
 
-ft_%.o: ft_%.c $(HEADERFILE)
+ft_%.o: ft_%.c $(HEADERFILES)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 $(LIBFT):

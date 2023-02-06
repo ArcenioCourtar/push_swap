@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 15:20:40 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:05:35 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h> // malloc, free
 #include <unistd.h> // write
 
+// Initialize new node to add to the list.
 t_dlist	*dlist_new(int num)
 {
 	t_dlist	*new;
@@ -27,6 +28,7 @@ t_dlist	*dlist_new(int num)
 	return (new);
 }
 
+// Add newly created node to the list. Becomes the new "first" element.
 void	dlist_add(t_dlist **list, t_dlist *new)
 {
 	if (*list == NULL)
@@ -41,6 +43,8 @@ void	dlist_add(t_dlist **list, t_dlist *new)
 	*list = new;
 }
 
+// Remove the current first element from the list, by pointing the 
+// elements around it to each other. Then free the first element.
 void	dlist_pop(t_dlist **list)
 {
 	t_dlist	*old_head;
@@ -62,6 +66,7 @@ void	dlist_pop(t_dlist **list)
 	}
 }
 
+// View list elements in order.
 void	dlist_view(t_dlist *list)
 {
 	t_dlist	*start;
@@ -80,6 +85,7 @@ void	dlist_view(t_dlist *list)
 	ft_printf("%i\n\n", list->num);
 }
 
+// Display number of elements in list.
 void	dlist_count(t_dlist *list)
 {
 	t_dlist	*start;
@@ -92,7 +98,10 @@ void	dlist_count(t_dlist *list)
 	else
 	{
 		while (list->next != start)
+		{
 			i++;
+			list = list->next;
+		}
 		ft_printf("List length: %i\n", i);
 	}
 }

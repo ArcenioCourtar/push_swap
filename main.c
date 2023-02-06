@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:28:50 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 15:23:11 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:57:30 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,33 +30,31 @@ t_dlist	*fill_list(int argc, char **argv)
 	return (start);
 }
 
-void	valid_input(int argc)
-{
-	if (argc == 0)
-		exit(EXIT_SUCCESS);
-}
-
 int	main(int argc, char **argv)
 {
 	t_dlist	*list_a;
 	t_dlist	*list_b;
 
-	valid_input(argc - 1);
+	valid_input(argc, argv);
 	list_a = fill_list(argc - 1, argv);
 	list_b = NULL;
 
 	dlist_view(list_a);
+	dlist_count(list_a);
+	dlist_view(list_b);
+	oper_select(&list_a, &list_b, PUSH_B);
+	dlist_view(list_a);
+	dlist_count(list_a);
+	dlist_view(list_b);
+	oper_select(&list_a, &list_b, PUSH_B);
+	dlist_view(list_a);
+	dlist_count(list_a);
 	dlist_view(list_b);
 	oper_select(&list_a, &list_b, PUSH_B);
 	dlist_view(list_a);
 	dlist_view(list_b);
 	oper_select(&list_a, &list_b, PUSH_B);
 	dlist_view(list_a);
-	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_B);
-	dlist_view(list_a);
-	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_B);
-	dlist_view(list_a);
+	dlist_count(list_a);
 	dlist_view(list_b);
 }
