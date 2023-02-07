@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 17:05:35 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:03:08 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	dlist_add(t_dlist **list, t_dlist *new)
 {
 	if (*list == NULL)
 	{
+		new->next = new;
+		new->prev = new;
 		*list = new;
 		return ;
 	}
@@ -79,10 +81,10 @@ void	dlist_view(t_dlist *list)
 	start = list;
 	while (start != list->next)
 	{
-		ft_printf("%i\n", list->num);
+		ft_printf("%i, addr: %p, next %p, start %p\n", list->num, list, list->next, start);
 		list = list->next;
 	}
-	ft_printf("%i\n\n", list->num);
+	ft_printf("%i, addr: %p, next %p, start %p\n\n", list->num, list, list->next, start);
 }
 
 // Display number of elements in list.

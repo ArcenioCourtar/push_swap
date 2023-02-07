@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 17:00:37 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:12:29 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,24 @@ static void	oper_rrot(t_dlist **list, int mode)
 // Move the first element of list "src" to list "dest"
 static void	oper_push(t_dlist **src, t_dlist **dest, int mode)
 {
-	t_dlist	*copy;
+	t_dlist	*move_this;
 
 	print_oper_push(mode);
 	if (*src == NULL)
 		return ;
-	copy = dlist_new((*src)->num);
-	if (*dest == NULL)
-		*dest = copy;
+	move_this = *src;
+	if ((*src)->next == *src)
+	{
+		dlist_add(dest, move_this);
+		*src = NULL;
+	}
 	else
-		dlist_add(dest, copy);
-	dlist_pop(src);
+	{
+		(*src)->next->prev = (*src)->prev;
+		(*src)->prev->next = (*src)->next;
+		*src = (*src)->next;
+		dlist_add(dest, move_this);
+	}
 }
 
 // Select which of the above four operations is to be executed

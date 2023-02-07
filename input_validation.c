@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:29:23 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 17:23:16 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:06:02 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 #include <stdlib.h> // exit
 #include <unistd.h> // write
 
+// static int	are_numbers()
+// {
+// }
+
+// static int	bound_check()
+// {
+// }
+
+// checks for duplicate numbers
 static int	check_duplicates(int argc, char **argv)
 {
 	int	comparing;
