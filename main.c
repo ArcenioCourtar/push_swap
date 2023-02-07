@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:28:50 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 12:13:08 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:25:47 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,16 @@ int	main(int argc, char **argv)
 
 	dlist_view(list_a);
 	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_B);
+	oper_select(&list_a, &list_b, SWAP_A);
 	dlist_view(list_a);
 	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_B);
+	oper_select(&list_a, &list_b, SWAP_A);
 	dlist_view(list_a);
 	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_B);
+	oper_select(&list_a, &list_b, SWAP_A);
 	dlist_view(list_a);
 	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_B);
-	dlist_view(list_a);
-	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_A);
-	dlist_view(list_a);
-	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_A);
-	dlist_view(list_a);
-	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_A);
-	dlist_view(list_a);
-	dlist_view(list_b);
-	oper_select(&list_a, &list_b, PUSH_A);
+	oper_select(&list_a, &list_b, SWAP_A);
 	dlist_view(list_a);
 	dlist_view(list_b);
 }

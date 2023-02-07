@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 12:03:08 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:28:52 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	dlist_add(t_dlist **list, t_dlist *new)
 
 // Remove the current first element from the list, by pointing the 
 // elements around it to each other. Then free the first element.
+// NOTE: Might not be needed with my new implementation.
 void	dlist_pop(t_dlist **list)
 {
 	t_dlist	*old_head;
@@ -87,8 +88,8 @@ void	dlist_view(t_dlist *list)
 	ft_printf("%i, addr: %p, next %p, start %p\n\n", list->num, list, list->next, start);
 }
 
-// Display number of elements in list.
-void	dlist_count(t_dlist *list)
+// Count number of elements in list
+int	dlist_count(t_dlist *list)
 {
 	t_dlist	*start;
 	int		i;
@@ -96,7 +97,7 @@ void	dlist_count(t_dlist *list)
 	i = 1;
 	start = list;
 	if (list == NULL)
-		ft_printf("list length: 0\n");
+		return (0);
 	else
 	{
 		while (list->next != start)
@@ -104,6 +105,6 @@ void	dlist_count(t_dlist *list)
 			i++;
 			list = list->next;
 		}
-		ft_printf("List length: %i\n", i);
+		return (i);
 	}
 }

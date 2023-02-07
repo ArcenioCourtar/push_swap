@@ -6,12 +6,12 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 12:12:29 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:27:10 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "print_oper.h"
+#include "print_oper.h" // separate header for the print_oper() function
 
 // All functions but one in this file are static since I exclusively use the
 // oper_select() function to gain access to all of them.
@@ -19,14 +19,31 @@
 // Swap the first two elements in a list.
 static void	oper_swap(t_dlist **list, int mode)
 {
-	int	temp;
+	t_dlist	*array[4];
+	t_dlist	*a;
+	t_dlist	*b;
 
 	print_oper(mode);
-	if (*list == NULL)
+	if (*list == NULL || dlist_count(*list) == 1)
 		return ;
-	temp = (*list)->num;
-	(*list)->num = (*list)->next->num;
-	(*list)->next->num = temp;
+	if (dlist_count(*list) == 2)
+	{
+		(*list) = (*list)->next;
+		return ;
+	}
+	a = (*list);
+	b = (*list)->next;
+	array[0] = a->prev;
+	array[1] = b->prev;
+	array[2] = a->next;
+	array[3] = b->next;
+	a->prev = array[2];
+	b->prev = array[0];
+	a->next = array[3];
+	b->next = array[1];
+	a->next->prev = a;
+	b->prev->next = b;
+	(*list) = b;
 }
 
 // Rotate elements in the list. First element becomes the last.

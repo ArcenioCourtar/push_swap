@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/06 16:57:20 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:24:43 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	dlist_pop(t_dlist **list);
 // view the node elements
 void	dlist_view(t_dlist *list);
 // Display the number of node elements
-void	dlist_count(t_dlist *list);
+int		dlist_count(t_dlist *list);
 
 // Select the operation to be performed on the stacks.
 // Using the #define directives in the "mode" field to select said operation.
