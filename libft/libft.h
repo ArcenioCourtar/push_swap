@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 13:15:15 by acourtar          #+#    #+#             */
-/*   Updated: 2022/11/16 17:56:31 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:11:50 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 // Returns 1 if character is printable (space counts, tabs/newlines don't)
 int		ft_isprint(int c);
+// Returns 1 if character is " ", \t, \n, \f, \r, \v
+int		ft_isspace(int c);
 // does NOT change the param passed to it
 int		ft_tolower(int c);
 // does NOT change the param passed to it
@@ -59,6 +61,8 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_atoi(const char *nptr);
 // My 42 version of printf
 int		ft_printf(const char *str, ...);
+// Convert initial portion of string to a long
+long	ft_atol(const char *str);
 
 // Returns character length of the string (excluding the NULL-terminator!)
 size_t	ft_strlen(const char *s);

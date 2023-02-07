@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:30:28 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 16:02:49 by acourtar         ###   ########.fr       */
+/*   Created: 2023/02/07 16:08:36 by acourtar          #+#    #+#             */
+/*   Updated: 2023/02/07 16:10:06 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// Return int equivalent of string 'str'.
-int	ft_atoi(const char *str)
+// Return long equivalent of string 'str'.
+long	ft_atol(const char *str)
 {
 	long	number;
 	int		is_negative;
@@ -36,5 +36,5 @@ int	ft_atoi(const char *str)
 	}
 	if (is_negative == 1)
 		number *= -1;
-	return ((int) number);
+	return (number);
 }
