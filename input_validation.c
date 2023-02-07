@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:29:23 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 17:25:04 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:48:43 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	is_nonum(int argc, char **argv)
 
 // checks for duplicate numbers and int over/underflow
 // NOTE: what happens when the long overflows?
+// Maybe add a strlen check as well?
 static int	isdupe_isoverflow(int argc, char **argv)
 {
 	long	cmp;

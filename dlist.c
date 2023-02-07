@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:28:52 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:46:35 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ void	dlist_view(t_dlist *list)
 	start = list;
 	while (start != list->next)
 	{
-		ft_printf("%i, addr: %p, next %p, start %p\n", list->num, list, list->next, start);
 		list = list->next;
 	}
-	ft_printf("%i, addr: %p, next %p, start %p\n\n", list->num, list, list->next, start);
 }
 
 // Count number of elements in list
