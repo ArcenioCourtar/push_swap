@@ -6,24 +6,24 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:24:43 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:13:26 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/libft.h"
-# define SWAP_A 0
-# define SWAP_B 1
-# define SWAP_S 2
-# define PUSH_A 3
-# define PUSH_B 4
-# define ROT_A 5
-# define ROT_B 6
-# define ROT_R 7
-# define RROT_A 8
-# define RROT_B 9
-# define RROT_R 10
+# define SWAP_A 0	// Swap top numbers of list a
+# define SWAP_B 1	// Swap top numbers of list b
+# define SWAP_S 2	// Swap top numbers of both lists
+# define PUSH_A 3	// Push top number of list b to a
+# define PUSH_B 4	// Push top number of list a to b
+# define ROT_A 5	// Rotate list a, first elem becomes the last
+# define ROT_B 6	// Rotate list b, first elem becomes the last
+# define ROT_R 7	// Rotate both lists
+# define RROT_A 8	// Reverse rotate list a, last elem becomes the first
+# define RROT_B 9	// Reverse rotate list b, last elem becomes the first
+# define RROT_R 10	// Reverse rotate both lists
 
 // Double liked list. Keep track of start/end by saving the starting point
 typedef struct dlist {
@@ -46,6 +46,10 @@ void	dlist_pop(t_dlist **list);
 void	dlist_view(t_dlist *list);
 // Display the number of node elements
 int		dlist_count(t_dlist *list);
+// Select sorting alg based on length of list
+void	select_sort(t_dlist **a, t_dlist **b);
+// Check if list in it's current state is sorted
+int		is_sorted(t_dlist *a);
 
 // Select the operation to be performed on the stacks.
 // Using the #define directives in the "mode" field to select said operation.

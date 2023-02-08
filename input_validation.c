@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:29:23 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 17:48:43 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:26:43 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,6 @@ void	valid_input(int argc, char **argv)
 		write(STDERR_FILENO, "Error\n", 6);
 		exit(EXIT_SUCCESS);
 	}
+	if (argc == 2)
+		exit(EXIT_SUCCESS);
 }

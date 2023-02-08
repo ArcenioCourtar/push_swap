@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:27:10 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:16:51 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 static void	oper_swap(t_dlist **list, int mode)
 {
 	t_dlist	*array[4];
-	t_dlist	*a;
-	t_dlist	*b;
+	t_dlist	*first;
+	t_dlist	*second;
 
 	print_oper(mode);
 	if (*list == NULL || dlist_count(*list) == 1)
@@ -31,19 +31,19 @@ static void	oper_swap(t_dlist **list, int mode)
 		(*list) = (*list)->next;
 		return ;
 	}
-	a = (*list);
-	b = (*list)->next;
-	array[0] = a->prev;
-	array[1] = b->prev;
-	array[2] = a->next;
-	array[3] = b->next;
-	a->prev = array[2];
-	b->prev = array[0];
-	a->next = array[3];
-	b->next = array[1];
-	a->next->prev = a;
-	b->prev->next = b;
-	(*list) = b;
+	first = (*list);
+	second = (*list)->next;
+	array[0] = first->prev;
+	array[1] = second->prev;
+	array[2] = first->next;
+	array[3] = second->next;
+	first->prev = array[2];
+	second->prev = array[0];
+	first->next = array[3];
+	second->next = array[1];
+	first->next->prev = first;
+	second->prev->next = second;
+	(*list) = second;
 }
 
 // Rotate elements in the list. First element becomes the last.

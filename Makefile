@@ -6,14 +6,17 @@ OBJFILES	:= main.o \
 			dlist.o \
 			operations.o \
 			print_oper.o \
-			input_validation.o
+			input_validation.o \
+			sorting.o \
+			sort_small.o
 HEADERFILES	:= push_swap.h \
-			print_oper.h
+			print_oper.h \
+			sorting.h
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJFILES)
-	cc $(CFLAGS) $(OBJFILES) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJFILES) $(LIBFT) -o $(NAME)
 
 re: fclean all
 
@@ -32,4 +35,4 @@ $(LIBFT):
 	$(MAKE) -C libft
 
 fsanitize: $(NAME)
-	cc $(CFLAGS) $(OBJFILES) $(LIBFT) -fsanitize=address -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJFILES) $(LIBFT) -fsanitize=address -o $(NAME)
