@@ -8,4 +8,5 @@ a.out
 libft.a
 push_swap
 checker_Mac
+checker_linux
 push_swap_visualizer
