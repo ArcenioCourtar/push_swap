@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:40:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/15 15:34:11 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:22:25 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,55 @@ void	sort_three(t_dlist **a)
 	}
 }
 
+int	correct_loc(t_dlist *ptr, t_dlist *b, t_dlist *max)
+{
+	if (b == NULL && is_sorted(ptr))
+		return (1);
+	else if (max != NULL)
+	{
+		if (b->num < ptr->num && ptr->prev == max)
+			return (1);
+		else if (b->num < ptr->num && b->num > ptr->prev->num)
+			return (1);
+		else if (b->num > max->num && ptr->prev == max)
+			return (1);
+	}
+	return (0);
+}
+
+// bruh
+static void	rotate_calc(t_dlist **a, t_dlist **b, t_dlist *max)
+{
+	t_dlist	*ptr;
+	int		steps;
+	int		len;
+
+	steps = 0;
+	ptr = (*a);
+	len = dlist_count((*a));
+	while (!correct_loc(ptr, (*b), max))
+	{
+		steps++;
+		ptr = ptr->next;
+	}
+	if (steps > len / 2)
+	{
+		while (steps < len)
+		{
+			oper_select(a, NULL, RROT_A);
+			steps++;
+		}
+	}
+	else
+	{
+		while (steps > 0)
+		{
+			oper_select(a, NULL, ROT_A);
+			steps--;
+		}
+	}
+}
+
 static void	sort_five_helper(t_dlist **a, t_dlist **b)
 {
 	t_dlist	*max;
@@ -63,7 +112,9 @@ static void	sort_five_helper(t_dlist **a, t_dlist **b)
 			max = (*a);
 		}
 		else
-			oper_select(a, NULL, ROT_A);
+		{
+			rotate_calc(a, b, max);
+		}
 	}
 }
 
@@ -76,6 +127,6 @@ void	sort_five(t_dlist **a, t_dlist **b, int len)
 	}
 	sort_three(a);
 	sort_five_helper(a, b);
-	while (is_sorted(*a) == 0)
-		oper_select(a, NULL, ROT_A);
+	if (!is_sorted(*a))
+		rotate_calc(a, b, NULL);
 }

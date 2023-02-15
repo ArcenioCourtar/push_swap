@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   debug_func.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 17:49:49 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/15 18:28:45 by acourtar         ###   ########.fr       */
+/*   Created: 2023/02/15 16:22:31 by acourtar          #+#    #+#             */
+/*   Updated: 2023/02/15 18:30:59 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "sorting.h"
+#include <unistd.h>
 
-int	is_sorted(t_dlist *a)
+// View list elements in order.
+void	dlist_view(t_dlist *list)
 {
 	t_dlist	*start;
-	int		num;
 
-	start = a;
-	num = a->num;
-	a = a->next;
-	while (a != start)
+	if (list == NULL)
 	{
-		if (num > a->num)
-			return (0);
-		num = a->num;
-		a = a->next;
+		write(STDOUT_FILENO, "(null)\n\n", 8);
+		return ;
 	}
-	return (1);
-}
-
-void	select_sort(t_dlist **a, t_dlist **b)
-{
-	int	len;
-
-	len = dlist_count((*a));
-	if (len == 2)
-		sort_two(a);
-	else if (len == 3)
-		sort_three(a);
-	else
-		sort_five(a, b, len);
+	start = list;
+	while (start != list->next)
+	{
+		list = list->next;
+	}
 }
