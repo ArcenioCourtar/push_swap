@@ -6,24 +6,35 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/08 15:13:26 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:44:14 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/libft.h"
-# define SWAP_A 0	// Swap top numbers of list a
-# define SWAP_B 1	// Swap top numbers of list b
-# define SWAP_S 2	// Swap top numbers of both lists
-# define PUSH_A 3	// Push top number of list b to a
-# define PUSH_B 4	// Push top number of list a to b
-# define ROT_A 5	// Rotate list a, first elem becomes the last
-# define ROT_B 6	// Rotate list b, first elem becomes the last
-# define ROT_R 7	// Rotate both lists
-# define RROT_A 8	// Reverse rotate list a, last elem becomes the first
-# define RROT_B 9	// Reverse rotate list b, last elem becomes the first
-# define RROT_R 10	// Reverse rotate both lists
+
+// enum of all possible operations.
+// ROT = FIRST elem becomes LAST
+// RROT = LAST elem becomes FIRST
+enum e_oper {
+	SWAP_A,
+	SWAP_B,
+	SWAP_S,
+	PUSH_A,
+	PUSH_B,
+	ROT_A,
+	ROT_B,
+	ROT_R,
+	RROT_A,
+	RROT_B,
+	RROT_R
+};
+
+typedef struct data {
+	struct dlist	*a;
+	struct dlist	*b;
+}	t_data;
 
 // Double liked list. Keep track of start/end by saving the starting point
 typedef struct dlist {

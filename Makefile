@@ -8,7 +8,8 @@ OBJFILES	:= main.o \
 			print_oper.o \
 			input_validation.o \
 			sorting.o \
-			sort_small.o
+			sort_small.o \
+			step_calc.o
 HEADERFILES	:= push_swap.h \
 			print_oper.h \
 			sorting.h

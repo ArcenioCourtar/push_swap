@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:49:49 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/08 15:14:41 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/13 12:10:52 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	is_sorted(t_dlist *a)
 		num = a->num;
 		a = a->next;
 	}
-	ft_printf("Sorted!");
 	return (1);
 }
 
@@ -41,6 +40,6 @@ void	select_sort(t_dlist **a, t_dlist **b)
 		sort_two(a);
 	else if (len == 3)
 		sort_three(a);
-	else if (len < 6)
+	else if (len < 10)
 		sort_five(a, b, len);
 }

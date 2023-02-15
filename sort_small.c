@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:40:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/08 15:12:56 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:34:11 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,27 @@ void	sort_three(t_dlist **a)
 	}
 }
 
+static void	sort_five_helper(t_dlist **a, t_dlist **b)
+{
+	t_dlist	*max;
+
+	max = (*a)->prev;
+	while ((*b) != NULL)
+	{
+		if ((*b)->num < (*a)->num && (*a)->prev == max)
+			oper_select(a, b, PUSH_A);
+		else if ((*b)->num < (*a)->num && (*b)->num > (*a)->prev->num)
+			oper_select(a, b, PUSH_A);
+		else if ((*b)->num > max->num && (*a)->prev == max)
+		{
+			oper_select(a, b, PUSH_A);
+			max = (*a);
+		}
+		else
+			oper_select(a, NULL, ROT_A);
+	}
+}
+
 void	sort_five(t_dlist **a, t_dlist **b, int len)
 {
 	while (len > 3)
@@ -54,14 +75,7 @@ void	sort_five(t_dlist **a, t_dlist **b, int len)
 		len--;
 	}
 	sort_three(a);
-	while ((*b) != NULL)
-	{
-		if ((*b)->num < (*a)->num && (*b)->num < (*a)->num)
-			oper_select(a, b, PUSH_A);
-		else if ((*b)->num > (*a)->num && (*b)->num > (*a)->prev->num)
-		{
-			oper_select(a, b, PUSH_A);
-			oper_select(a, b, ROT_A);
-		}
-	}
+	sort_five_helper(a, b);
+	while (is_sorted(*a) == 0)
+		oper_select(a, NULL, ROT_A);
 }
