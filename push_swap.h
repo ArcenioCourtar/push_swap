@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/15 15:44:14 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:47:07 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ enum e_oper {
 };
 
 typedef struct data {
+	int				len;
+	int				min;
+	int				max;
 	struct dlist	*a;
 	struct dlist	*b;
 }	t_data;
