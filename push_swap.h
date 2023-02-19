@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/15 18:30:46 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:29:35 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,16 @@ enum e_oper {
 	RROT_R
 };
 
-typedef struct data {
-	int				len;
-	int				min;
-	int				max;
-	struct dlist	*a;
-	struct dlist	*b;
-}	t_data;
-
 // Double liked list. Keep track of start/end by saving the starting point
 typedef struct dlist {
 	int				num;
 	struct dlist	*next;
 	struct dlist	*prev;
+	int				stack;
+	struct dlist	*stkstart;
+	struct dlist	*stknxt;
+	struct dlist	*stkup;
+	struct dlist	*listptr;
 }	t_dlist;
 
 // Check if the list of arguments passed is valid and can be used.

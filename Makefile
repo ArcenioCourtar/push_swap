@@ -9,7 +9,9 @@ OBJFILES	:= main.o \
 			input_validation.o \
 			sorting.o \
 			sort_small.o \
-			step_calc.o
+			step_calc.o \
+			sort_big.o \
+			debug_func.o
 HEADERFILES	:= push_swap.h \
 			print_oper.h \
 			sorting.h

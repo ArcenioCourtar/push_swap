@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/07 17:46:35 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:34:22 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ t_dlist	*dlist_new(int num)
 	new->next = new;
 	new->prev = new;
 	new->num = num;
+	new->stack = 0;
+	new->stkstart = NULL;
+	new->stknxt = NULL;
+	new->stkup = NULL;
+	new->listptr = NULL;
 	return (new);
 }
 
@@ -66,23 +71,6 @@ void	dlist_pop(t_dlist **list)
 		(*list)->prev->next = (*list)->next;
 		*list = (*list)->next;
 		free(old_head);
-	}
-}
-
-// View list elements in order.
-void	dlist_view(t_dlist *list)
-{
-	t_dlist	*start;
-
-	if (list == NULL)
-	{
-		write(STDOUT_FILENO, "(null)\n\n", 8);
-		return ;
-	}
-	start = list;
-	while (start != list->next)
-	{
-		list = list->next;
 	}
 }
 
