@@ -11,7 +11,8 @@ OBJFILES	:= main.o \
 			sort_small.o \
 			step_calc.o \
 			sort_big.o \
-			debug_func.o
+			debug_func.o \
+			lis.o
 HEADERFILES	:= push_swap.h \
 			print_oper.h \
 			sorting.h

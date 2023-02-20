@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:49:49 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/19 16:52:16 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:25:10 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,6 @@ int	is_sorted(t_dlist *a)
 	return (1);
 }
 
-void	lis(t_dlist **a)
-{
-	t_dlist	*move;
-
-	move = (*a);
-	(*a)->stkstart = (*a);
-	move = move->next;
-	while (move != (*a))
-	{
-		move = move->next;
-	}
-}
-
 void	select_sort(t_dlist **a, t_dlist **b)
 {
 	int	len;
@@ -55,4 +42,6 @@ void	select_sort(t_dlist **a, t_dlist **b)
 		sort_three(a);
 	else if (len < 6)
 		sort_five(a, b, len);
+	else
+		lis(a);
 }

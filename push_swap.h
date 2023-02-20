@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/19 16:29:35 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:34:45 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ typedef struct dlist {
 	struct dlist	*next;
 	struct dlist	*prev;
 	int				stack;
-	struct dlist	*stkstart;
-	struct dlist	*stknxt;
+	struct dlist	*stknext;
+	struct dlist	*stkprev;
 	struct dlist	*stkup;
+	struct dlist	*stkdown;
 	struct dlist	*listptr;
 }	t_dlist;
 
