@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:49:49 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/20 14:25:10 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:36:30 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void	select_sort(t_dlist **a, t_dlist **b)
 	else if (len < 6)
 		sort_five(a, b, len);
 	else
-		lis(a);
+		sort_big(a, b);
 }

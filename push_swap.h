@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/20 15:34:45 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:23:32 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ typedef struct dlist {
 	int				num;
 	struct dlist	*next;
 	struct dlist	*prev;
-	int				stack;
+	int				lis;
 	struct dlist	*stknext;
 	struct dlist	*stkprev;
 	struct dlist	*stkup;
 	struct dlist	*stkdown;
-	struct dlist	*listptr;
+	struct dlist	*lisptr;
 }	t_dlist;
 
 // Check if the list of arguments passed is valid and can be used.

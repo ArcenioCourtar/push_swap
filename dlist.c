@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/20 16:36:47 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:02:43 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ t_dlist	*dlist_new(int num)
 	new->next = new;
 	new->prev = new;
 	new->num = num;
-	new->stack = 1;
+	new->lis = 0;
 	new->stknext = NULL;
 	new->stkprev = NULL;
 	new->stkup = NULL;
 	new->stkdown = NULL;
-	new->listptr = NULL;
+	new->lisptr = NULL;
 	return (new);
 }
 

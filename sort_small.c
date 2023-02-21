@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:40:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/15 18:22:25 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:40:59 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ void	sort_three(t_dlist **a)
 	}
 }
 
-int	correct_loc(t_dlist *ptr, t_dlist *b, t_dlist *max)
+static int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *max)
 {
-	if (b == NULL && is_sorted(ptr))
+	if (b == NULL && is_sorted(a))
 		return (1);
 	else if (max != NULL)
 	{
-		if (b->num < ptr->num && ptr->prev == max)
+		if (b->num < a->num && a->prev == max)
 			return (1);
-		else if (b->num < ptr->num && b->num > ptr->prev->num)
+		else if (b->num < a->num && b->num > a->prev->num)
 			return (1);
-		else if (b->num > max->num && ptr->prev == max)
+		else if (b->num > max->num && a->prev == max)
 			return (1);
 	}
 	return (0);
