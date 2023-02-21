@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:40:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/21 16:53:24 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:08:21 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	sort_three(t_dlist **a)
 	}
 }
 
-static int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *min)
+int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *min)
 {
 	if (b == NULL && is_sorted(a))
 		return (1);
@@ -63,7 +63,7 @@ static int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *min)
 }
 
 // bruh
-static void	rotate_calc(t_dlist **a, t_dlist **b, t_dlist *min)
+void	rotate_calc(t_dlist **a, t_dlist **b, t_dlist *min)
 {
 	t_dlist	*ptr;
 	int		steps;

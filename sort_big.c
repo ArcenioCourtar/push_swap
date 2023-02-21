@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:36:49 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/21 16:39:20 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:11:24 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	insertion_sort(t_dlist **a, t_dlist **b, t_dlist **min)
 		if (correct_loc_min((*a), (*b), min))
 			oper_select(a, b, PUSH_A);
 		else
-			oper_select(a, b, ROT_A);
+			rotate_calc(a, b, (*min));
 	}
 }
 
@@ -69,5 +69,5 @@ void	sort_big(t_dlist **a, t_dlist **b)
 	initial_push(a, b, &min);
 	insertion_sort(a, b, &min);
 	while (!is_sorted(*a))
-		oper_select(a, b, ROT_A);
+		rotate_calc(a, b, NULL);
 }
