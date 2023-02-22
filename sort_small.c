@@ -6,11 +6,12 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:40:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/21 17:08:21 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:55:49 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "sorting.h"
 
 void	sort_two(t_dlist **a)
 {
@@ -42,55 +43,6 @@ void	sort_three(t_dlist **a)
 		{
 			oper_select(a, NULL, SWAP_A);
 			oper_select(a, NULL, RROT_A);
-		}
-	}
-}
-
-int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *min)
-{
-	if (b == NULL && is_sorted(a))
-		return (1);
-	else if (min != NULL)
-	{
-		if (a->prev->num < b->num && b->num < a->num)
-			return (1);
-		else if (a->prev->num < b->num && a == min)
-			return (1);
-		else if (b->num < a->num && a == min)
-			return (1);
-	}
-	return (0);
-}
-
-// bruh
-void	rotate_calc(t_dlist **a, t_dlist **b, t_dlist *min)
-{
-	t_dlist	*ptr;
-	int		steps;
-	int		len;
-
-	steps = 0;
-	ptr = (*a);
-	len = dlist_count((*a));
-	while (!correct_loc(ptr, (*b), min))
-	{
-		steps++;
-		ptr = ptr->next;
-	}
-	if (steps > len / 2)
-	{
-		while (steps < len)
-		{
-			oper_select(a, NULL, RROT_A);
-			steps++;
-		}
-	}
-	else
-	{
-		while (steps > 0)
-		{
-			oper_select(a, NULL, ROT_A);
-			steps--;
 		}
 	}
 }
