@@ -1,9 +1,16 @@
-CC			:= cc
-LIBFT		:= libft/libft.a
-CFLAGS		:= -Wall -Werror -Wextra
-NAME		:= push_swap
-OBJFILES	:= main.o
-HEADERFILES	:= push_swap.h
+CC			:=	cc
+LIBFT		:=	libft/libft.a
+CFLAGS		:=	-Wall -Werror -Wextra
+NAME		:=	push_swap
+OBJFILES	:=	main.o \
+			data.o \
+			debug_func.o \
+			dlist.o \
+			input_validation.o \
+			operations.o \
+			print_oper.o
+HEADERFILES	:=	push_swap.h \
+			print_oper.h
 
 all: $(NAME)
 
