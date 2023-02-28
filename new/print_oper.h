@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:42:46 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 15:39:46 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:22:00 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 // If it wasn't for 42norm compliance I'd put these function inside of
 // operations.c and also make them static.
 
-// Print the performed operation in STDOUT
-void	print_oper(int mode);
 // Print the performed push operation in STDOUT. Space issues. :(
 void	print_oper_push(int mode);
 

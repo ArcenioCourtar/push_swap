@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:50:27 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 15:03:22 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:22:09 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	dlist_view(t_dlist *list);
 
 
 void	oper_select(t_data *dat, int mode);
+
+void	print_oper(t_dlist *oper);
 
 
 // exit function

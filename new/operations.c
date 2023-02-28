@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 15:55:07 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:17:28 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	oper_swap_helper(t_dlist **list)
 }
 
 // Swap the first two elements in a list.
+// Select which list based on mode.
 static void	oper_swap(t_data *dat, int mode)
 {
 	t_dlist	**list;
@@ -57,30 +58,46 @@ static void	oper_swap(t_data *dat, int mode)
 	oper_swap_helper(list);
 }
 
-// Rotate elements in the list. First element becomes the last.
-static void	oper_rot(t_dlist **list, int mode)
+// Rotate elements in the list.
+// Select which list and which direction based on mode.
+// ROT = first elem becomes last.
+// RROT = last elem becomes first.
+static void	oper_rot(t_data *dat, int mode)
 {
-	print_oper(mode);
-	if (*list == NULL)
-		return ;
-	*list = (*list)->next;
-}
+	t_dlist	**list;
 
-// Reverse rotate elements in the list. Last element becomes the first.
-static void	oper_rrot(t_dlist **list, int mode)
-{
-	print_oper(mode);
+	oper_add(dat, mode);
+	if (mode == ROT_A || mode == RROT_A)
+		list = &(dat->a);
+	else
+		list = &(dat->b);
 	if (*list == NULL)
 		return ;
-	*list = (*list)->prev;
+	if (mode == ROT_A || mode == ROT_B)
+		*list = (*list)->next;
+	else
+		*list = (*list)->prev;
 }
 
 // Move the first element of list "src" to list "dest"
-static void	oper_push(t_dlist **src, t_dlist **dest, int mode)
+// TODO: make separate C file for helper functions.
+static void	oper_push(t_data *dat, int mode)
 {
 	t_dlist	*move_this;
+	t_dlist	**src;
+	t_dlist	**dest;
 
-	print_oper_push(mode);
+	oper_add(dat, mode);
+	if (mode == PUSH_A)
+	{
+		src = &(dat->b);
+		dest = &(dat->a);
+	}
+	else
+	{
+		src = &(dat->a);
+		dest = &(dat->b);
+	}
 	if (*src == NULL)
 		return ;
 	move_this = *src;
@@ -101,20 +118,10 @@ static void	oper_push(t_dlist **src, t_dlist **dest, int mode)
 // Select which of the above four operations is to be executed
 void	oper_select(t_data *dat, int mode)
 {
-	if (mode == SWAP_A)
+	if (mode == SWAP_A || mode == SWAP_B)
 		oper_swap(dat, mode);
-	else if (mode == SWAP_B)
-		oper_swap(dat, mode);
-	else if (mode == PUSH_A)
-		oper_push(&(dat->b), &(dat->a), mode);
-	else if (mode == PUSH_B)
-		oper_push(&(dat->a), &(dat->b), mode);
-	else if (mode == ROT_A)
-		oper_rot(&(dat->a), mode);
-	else if (mode == ROT_B)
-		oper_rot(&(dat->b), mode);
-	else if (mode == RROT_A)
-		oper_rrot(&(dat->a), mode);
-	else if (mode == RROT_B)
-		oper_rrot(&(dat->b), mode);
+	else if (mode == PUSH_A || mode == PUSH_B)
+		oper_push(dat, mode);
+	else if (mode == ROT_A || mode == ROT_B || mode == RROT_A || mode == RROT_B)
+		oper_rot(dat, mode);
 }
