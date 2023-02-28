@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 14:18:25 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:54:18 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,21 @@ void	dlist_add(t_dlist **list, t_dlist *new)
 	(*list)->prev = new;
 	new->prev->next = new;
 	*list = new;
+}
+
+void	dlist_add_oper(t_dlist **list, t_dlist *new)
+{
+	if (*list == NULL)
+	{
+		new->next = new;
+		new->prev = new;
+		*list = new;
+		return ;
+	}
+	new->next = *list;
+	new->prev = (*list)->prev;
+	(*list)->prev->next = new;
+	(*list)->prev = new;
 }
 
 // Remove the current first element from the list, by pointing the 

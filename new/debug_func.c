@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:22:31 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 14:34:38 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:29:04 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	dlist_view(t_dlist *list)
 		ft_printf("%i\n", list->num);
 		list = list->next;
 	}
-	ft_printf("%i\n", list->num);
+	ft_printf("%i\n\n", list->num);
 }

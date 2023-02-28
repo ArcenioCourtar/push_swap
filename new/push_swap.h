@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:50:27 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 16:22:09 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:54:59 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_data	*data_new(void);
 t_dlist	*dlist_new(int num);
 // add a node to the linked list
 void	dlist_add(t_dlist **list, t_dlist *new);
+// add node to list of operatios
+void	dlist_add_oper(t_dlist **list, t_dlist *new);
 // remove the first element of the node
 void	dlist_pop(t_dlist **list);
 // Display the number of node elements

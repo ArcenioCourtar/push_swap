@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:00:35 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 17:15:33 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:56:23 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void	oper_add(t_data *dat, int mode)
 		add = dlist_new(mode);
 		if (add == NULL)
 			exit_func(&dat);
-		dlist_add(&(dat->op), add);
+		dlist_add_oper(&(dat->op), add);
 	}
 }

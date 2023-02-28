@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:49:55 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 16:24:35 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:39:52 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ int	main(int argc, char **argv)
 
 	valid_input(argc, argv);
 	dat = fill_list(argc - 1, argv);
-	dlist_view(dat->a);
 	oper_select(dat, SWAP_A);
-	dlist_view(dat->a);
 	oper_select(dat, SWAP_A);
+	oper_select(dat, ROT_A);
+	oper_select(dat, RROT_A);
+	oper_select(dat, PUSH_B);
+	oper_select(dat, PUSH_B);
+	oper_select(dat, ROT_B);
 	print_oper(dat->op);
 }
