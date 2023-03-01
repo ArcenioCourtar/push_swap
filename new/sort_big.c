@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:36:49 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/01 13:17:25 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:33:46 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	initial_push(t_data *dat, t_dlist **min)
 		if (dat->a->lis == 1)
 		{
 			if ((*min) == NULL)
+				(*min) = dat->a;
+			else if ((*min)->num > dat->a->num)
 				(*min) = dat->a;
 			oper_select(dat, ROT_A);
 		}
@@ -69,5 +71,7 @@ void	sort_big(t_data *dat)
 	initial_push(dat, &min);
 	insertion_sort(dat, &min);
 	while (!is_sorted(dat->a))
+	{
 		rotate_calc(dat, NULL);
+	}
 }
