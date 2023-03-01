@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:50:27 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 17:54:59 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:25:26 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ enum e_oper {
 };
 
 typedef struct data {
+	struct dlist	*min;
 	struct dlist	*a;
 	struct dlist	*b;
 	struct dlist	*op;
@@ -70,6 +71,10 @@ void	dlist_view(t_dlist *list);
 void	oper_select(t_data *dat, int mode);
 
 void	print_oper(t_dlist *oper);
+
+void	select_sort(t_data *dat);
+
+int		is_sorted(t_dlist *a);
 
 
 // exit function

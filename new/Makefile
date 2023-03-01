@@ -8,9 +8,15 @@ OBJFILES	:=	main.o \
 			dlist.o \
 			input_validation.o \
 			operations.o \
-			print_oper.o
+			print_oper.o \
+			sorting.o \
+			sort_small.o \
+			rot_calc.o \
+			sort_big.o \
+			lis.o
 HEADERFILES	:=	push_swap.h \
-			print_oper.h
+			print_oper.h \
+			sorting.h
 
 all: $(NAME)
 
