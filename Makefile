@@ -1,20 +1,20 @@
-CC			:= cc
-LIBFT		:= libft/libft.a
-CFLAGS		:= -Wall -Werror -Wextra
-NAME		:= push_swap
-OBJFILES	:= main.o \
+CC			:=	cc
+LIBFT		:=	libft/libft.a
+CFLAGS		:=	-Wall -Werror -Wextra
+NAME		:=	push_swap
+OBJFILES	:=	main.o \
+			data.o \
+			debug_func.o \
 			dlist.o \
+			input_validation.o \
 			operations.o \
 			print_oper.o \
-			input_validation.o \
 			sorting.o \
 			sort_small.o \
-			step_calc.o \
+			rot_calc.o \
 			sort_big.o \
-			debug_func.o \
-			lis.o \
-			rot_calc.o
-HEADERFILES	:= push_swap.h \
+			lis.o
+HEADERFILES	:=	push_swap.h \
 			print_oper.h \
 			sorting.h
 

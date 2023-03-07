@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 12:32:07 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/21 13:23:32 by acourtar         ###   ########.fr       */
+/*   Created: 2023/02/28 11:50:27 by acourtar          #+#    #+#             */
+/*   Updated: 2023/03/01 12:25:26 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define PUSH_SWAP_H
 # include "libft/libft.h"
 
-// enum of all possible operations.
-// ROT = FIRST elem becomes LAST
-// RROT = LAST elem becomes FIRST
 enum e_oper {
 	SWAP_A,
 	SWAP_B,
@@ -31,7 +28,13 @@ enum e_oper {
 	RROT_R
 };
 
-// Double liked list. Keep track of start/end by saving the starting point
+typedef struct data {
+	struct dlist	*min;
+	struct dlist	*a;
+	struct dlist	*b;
+	struct dlist	*op;
+}	t_data;
+
 typedef struct dlist {
 	int				num;
 	struct dlist	*next;
@@ -44,29 +47,38 @@ typedef struct dlist {
 	struct dlist	*lisptr;
 }	t_dlist;
 
-// Check if the list of arguments passed is valid and can be used.
+// Checks if input is valid
+// TODO: strlen check for long overflows? :)
 void	valid_input(int argc, char **argv);
 
+// sets up top level data struct;
+t_data	*data_new(void);
 // Initialize a new node of the linked list with value "num".
 // The "prev" and "next" pointers both point back to itself.
 t_dlist	*dlist_new(int num);
 // add a node to the linked list
 void	dlist_add(t_dlist **list, t_dlist *new);
+// add node to list of operatios
+void	dlist_add_oper(t_dlist **list, t_dlist *new);
 // remove the first element of the node
 void	dlist_pop(t_dlist **list);
-// view the node elements
-void	dlist_view(t_dlist *list);
 // Display the number of node elements
 int		dlist_count(t_dlist *list);
-// Select sorting alg based on length of list
-void	select_sort(t_dlist **a, t_dlist **b);
-// Check if list in it's current state is sorted
+// view list;
+void	dlist_view(t_dlist *list);
+
+
+void	oper_select(t_data *dat, int mode);
+
+void	print_oper(t_dlist *oper);
+
+void	select_sort(t_data *dat);
+
 int		is_sorted(t_dlist *a);
 
-// Select the operation to be performed on the stacks.
-// Using the #define directives in the "mode" field to select said operation.
-// The functions for the operations themselves are static and thus
-// unavailable to any function outside of this one.
-void	oper_select(t_dlist **list_a, t_dlist **list_b, int mode);
+
+// exit function
+// TODO: proper freeing of nodes
+void	exit_func(t_data **dat);
 
 #endif

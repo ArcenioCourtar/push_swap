@@ -5,41 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 18:28:50 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/08 15:13:59 by acourtar         ###   ########.fr       */
+/*   Created: 2023/02/28 11:49:55 by acourtar          #+#    #+#             */
+/*   Updated: 2023/03/01 12:19:13 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
-// ALLOWED: read, write, malloc, free, exit
 
-t_dlist	*fill_list(int argc, char **argv)
-{
-	t_dlist	*start;
+t_data	*fill_list(int argc, char **argv)
+{	
+	t_data	*new;
 	t_dlist	*current;
 
-	start = dlist_new(ft_atoi(argv[argc]));
+	new = data_new();
+	if (new == NULL)
+		exit_func(&new);
+	new->a = dlist_new(ft_atoi(argv[argc]));
+	if (new->a == NULL)
+		exit_func(&new);
 	argc--;
 	while (argc > 0)
 	{
 		current = dlist_new(ft_atoi(argv[argc]));
-		dlist_add((&start), current);
+		if (current == NULL)
+			exit_func(&new);
+		dlist_add(&(new->a), current);
 		argc--;
 	}
-	return (start);
+	return (new);
 }
 
 int	main(int argc, char **argv)
 {
-	t_dlist	*a;
-	t_dlist	*b;
+	t_data	*dat;
 
 	valid_input(argc, argv);
-	a = fill_list(argc - 1, argv);
-	b = NULL;
-	if (is_sorted(a))
-		return (0);
-	select_sort(&a, &b);
-	return (0);
+	dat = fill_list(argc - 1, argv);
+	select_sort(dat);
+	print_oper(dat->op);
 }

@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:36:49 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/21 17:11:24 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:33:42 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 // might be able to improve this by comparing pairs to the lis
 // members surrounding them, and swapping them if it results 
 // in a larger lis
-static void	initial_push(t_dlist **a, t_dlist **b, t_dlist **min)
+static void	initial_push(t_data *dat, t_dlist **min)
 {
-	while ((*a) != (*min))
+	while (dat->a != (*min))
 	{
-		if ((*a)->lis == 1)
+		if (dat->a->lis == 1)
 		{
 			if ((*min) == NULL)
-				(*min) = (*a);
-			oper_select(a, NULL, ROT_A);
+				(*min) = dat->a;
+			else if ((*min)->num > dat->a->num)
+				(*min) = dat->a;
+			oper_select(dat, ROT_A);
 		}
 		else
-		{
-			oper_select(a, b, PUSH_B);
-		}
+			oper_select(dat, PUSH_B);
 	}
 }
 
@@ -49,25 +49,146 @@ static int	correct_loc_min(t_dlist *a, t_dlist *b, t_dlist **min)
 	return (0);
 }
 
-static void	insertion_sort(t_dlist **a, t_dlist **b, t_dlist **min)
+int	stepcount_b(int steptmp, int len)
 {
-	while ((*b) != NULL)
+	if (steptmp > len / 2)
+		return (len - steptmp);
+	else
+		return (steptmp);
+}
+
+int	stepcounter(t_data *dat, t_dlist *curr, t_dlist *min)
+{
+	int		result;
+	int		steptmp;
+	int		len;
+	t_dlist	*tmpptr;
+
+	tmpptr = curr;
+	len = dlist_count(dat->b);
+	steptmp = 0;
+	while (dat->b != tmpptr)
 	{
-		if (correct_loc_min((*a), (*b), min))
-			oper_select(a, b, PUSH_A);
-		else
-			rotate_calc(a, b, (*min));
+		steptmp++;
+		tmpptr = tmpptr->next;
+	}
+	result = stepcount_b(steptmp, len);
+	steptmp = 0;
+	tmpptr = dat->a;
+	len = dlist_count(dat->a);
+	while (!correct_loc(tmpptr, curr, min))
+	{
+		steptmp++;
+		tmpptr = tmpptr->next;
+	}
+	result += stepcount_b(steptmp, len) + 1;
+	return (result);
+}
+
+void	rotate_b(t_data *dat, int steps, int len)
+{
+	if (steps > len / 2)
+	{
+		while (steps < len)
+		{
+			oper_select(dat, RROT_B);
+			steps++;
+		}
+	}
+	else
+	{
+		while (steps > 0)
+		{
+			oper_select(dat, ROT_B);
+			steps--;
+		}
 	}
 }
 
-void	sort_big(t_dlist **a, t_dlist **b)
+void	rotate_a(t_data *dat, int steps, int len)
+{
+	if (steps > len / 2)
+	{
+		while (steps < len)
+		{
+			oper_select(dat, RROT_A);
+			steps++;
+		}
+	}
+	else
+	{
+		while (steps > 0)
+		{
+			oper_select(dat, ROT_A);
+			steps--;
+		}
+	}
+	oper_select(dat, PUSH_A);
+}
+
+void	ins_back(t_data **dat, t_dlist *shortptr, t_dlist **min)
+{
+	int		steps;
+	int		len;
+	t_dlist	*tmpptr;
+
+	tmpptr = (*dat)->b;
+	len = dlist_count((*dat)->b);
+	steps = 0;
+	while (tmpptr != shortptr)
+	{
+		steps++;
+		tmpptr = tmpptr->next;
+	}
+	rotate_b((*dat), steps, len);
+	tmpptr = (*dat)->a;
+	len = dlist_count((*dat)->a);
+	steps = 0;
+	while (!correct_loc_min(tmpptr, (*dat)->b, min))
+	{
+		steps++;
+		tmpptr = tmpptr->next;
+	}
+	rotate_a((*dat), steps, len);
+}
+
+void	new_sort(t_data **dat, t_dlist **min)
+{
+	t_dlist	*curr;
+	t_dlist	*shortptr;
+	int		low;
+	int		steptmp;
+
+	while ((*dat)->b != NULL)
+	{
+		low = 0;
+		curr = (*dat)->b;
+		while (1)
+		{
+			steptmp = stepcounter((*dat), curr, (*min));
+			if (low == 0 || steptmp < low)
+			{
+				low = steptmp;
+				shortptr = curr;
+			}
+			curr = curr->next;
+			if (curr == (*dat)->b)
+				break ;
+		}
+		ins_back(dat, shortptr, min);
+	}
+}
+
+void	sort_big(t_data *dat)
 {
 	t_dlist	*min;
 
 	min = NULL;
-	lis(a);
-	initial_push(a, b, &min);
-	insertion_sort(a, b, &min);
-	while (!is_sorted(*a))
-		rotate_calc(a, b, NULL);
+	lis(&(dat->a));
+	initial_push(dat, &min);
+	new_sort(&dat, &min);
+	while (!is_sorted(dat->a))
+	{
+		rotate_calc(dat, NULL);
+	}
 }

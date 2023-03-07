@@ -6,79 +6,79 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:40:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/22 12:55:49 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:30:21 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "sorting.h"
 
-void	sort_two(t_dlist **a)
+void	sort_two(t_data *dat)
 {
-	if ((*a)->num > (*a)->next->num)
-		oper_select(a, NULL, SWAP_A);
+	if (dat->a->num > dat->a->next->num)
+		oper_select(dat, SWAP_A);
 }
 
-void	sort_three(t_dlist **a)
+void	sort_three(t_data *dat)
 {
 	int	num[3];
 
-	num[0] = (*a)->num;
-	num[1] = (*a)->next->num;
-	num[2] = (*a)->next->next->num;
+	num[0] = dat->a->num;
+	num[1] = dat->a->next->num;
+	num[2] = dat->a->next->next->num;
 	if (num[0] < num[1] && num[0] < num[2] && num[1] > num[2])
 	{
-		oper_select(a, NULL, SWAP_A);
-		oper_select(a, NULL, ROT_A);
+		oper_select(dat, SWAP_A);
+		oper_select(dat, ROT_A);
 	}
 	else if (num[0] > num[1] && num[0] < num[2])
-		oper_select(a, NULL, SWAP_A);
+		oper_select(dat, SWAP_A);
 	else if (num[0] < num[1] && num[0] > num[2])
-		oper_select(a, NULL, RROT_A);
+		oper_select(dat, RROT_A);
 	else if (num[0] > num[1] && num[0] > num[2])
 	{
 		if (num[1] < num[2])
-			oper_select(a, NULL, ROT_A);
+			oper_select(dat, ROT_A);
 		else
 		{
-			oper_select(a, NULL, SWAP_A);
-			oper_select(a, NULL, RROT_A);
+			oper_select(dat, SWAP_A);
+			oper_select(dat, RROT_A);
 		}
 	}
 }
 
-static void	sort_five_helper(t_dlist **a, t_dlist **b)
+static void	sort_five_helper(t_data *dat)
 {
 	t_dlist	*min;
 
-	min = (*a);
-	while ((*b) != NULL)
+	min = dat->a;
+	while (dat->b != NULL)
 	{
-		if ((*b)->num < (*a)->num && (*a) == min)
+		if (dat->b->num < dat->a->num && dat->a == min)
 		{
-			oper_select(a, b, PUSH_A);
-			min = (*a);
+			oper_select(dat, PUSH_A);
+			min = dat->a;
 		}
-		else if ((*b)->num < (*a)->num && (*b)->num > (*a)->prev->num)
-			oper_select(a, b, PUSH_A);
-		else if ((*b)->num > (*a)->prev->num && (*a) == min)
-			oper_select(a, b, PUSH_A);
+		else if (dat->b->num < dat->a->num && dat->b->num > dat->a->prev->num)
+			oper_select(dat, PUSH_A);
+		else if (dat->b->num > dat->a->prev->num && dat->a == min)
+			oper_select(dat, PUSH_A);
 		else
 		{
-			rotate_calc(a, b, min);
+			rotate_calc(dat, min);
 		}
 	}
 }
 
-void	sort_five(t_dlist **a, t_dlist **b, int len)
+void	sort_five(t_data *dat, int len)
 {
 	while (len > 3)
 	{
-		oper_select(a, b, PUSH_B);
+		oper_select(dat, PUSH_B);
 		len--;
 	}
-	sort_three(a);
-	sort_five_helper(a, b);
-	if (!is_sorted(*a))
-		rotate_calc(a, b, NULL);
+	sort_three(dat);
+	sort_five_helper(dat);
+	if (!is_sorted(dat->a))
+		rotate_calc(dat, NULL);
 }

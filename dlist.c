@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/21 13:02:43 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:54:18 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,12 @@ t_dlist	*dlist_new(int num)
 {
 	t_dlist	*new;
 
-	new = malloc(sizeof(t_dlist));
+	new = ft_calloc(1, sizeof(t_dlist));
 	if (new == NULL)
 		return (NULL);
 	new->next = new;
 	new->prev = new;
 	new->num = num;
-	new->lis = 0;
-	new->stknext = NULL;
-	new->stkprev = NULL;
-	new->stkup = NULL;
-	new->stkdown = NULL;
-	new->lisptr = NULL;
 	return (new);
 }
 
@@ -49,6 +43,21 @@ void	dlist_add(t_dlist **list, t_dlist *new)
 	(*list)->prev = new;
 	new->prev->next = new;
 	*list = new;
+}
+
+void	dlist_add_oper(t_dlist **list, t_dlist *new)
+{
+	if (*list == NULL)
+	{
+		new->next = new;
+		new->prev = new;
+		*list = new;
+		return ;
+	}
+	new->next = *list;
+	new->prev = (*list)->prev;
+	(*list)->prev->next = new;
+	(*list)->prev = new;
 }
 
 // Remove the current first element from the list, by pointing the 

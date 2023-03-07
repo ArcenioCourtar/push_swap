@@ -6,49 +6,12 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:52:35 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/22 13:26:12 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:36:04 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "sorting.h"
-
-static void	rotate_exec(t_dlist **list, int steps, int len)
-{
-	if (steps > len / 2)
-	{
-		while (steps < len)
-		{
-			oper_select(list, NULL, RROT_A);
-			steps++;
-		}
-	}
-	else
-	{
-		while (steps > 0)
-		{
-			oper_select(list, NULL, ROT_A);
-			steps--;
-		}
-	}
-}
-
-void	rotate_calc(t_dlist **a, t_dlist **b, t_dlist *min)
-{
-	t_dlist	*ptr;
-	int		steps;
-	int		len;
-
-	steps = 0;
-	ptr = (*a);
-	len = dlist_count((*a));
-	while (!correct_loc(ptr, (*b), min))
-	{
-		steps++;
-		ptr = ptr->next;
-	}
-	rotate_exec(a, steps, len);
-}
 
 int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *min)
 {
@@ -64,4 +27,41 @@ int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *min)
 			return (1);
 	}
 	return (0);
+}
+
+static void	rotate_exec(t_data *dat, int steps, int len)
+{
+	if (steps > len / 2)
+	{
+		while (steps < len)
+		{
+			oper_select(dat, RROT_A);
+			steps++;
+		}
+	}
+	else
+	{
+		while (steps > 0)
+		{
+			oper_select(dat, ROT_A);
+			steps--;
+		}
+	}
+}
+
+void	rotate_calc(t_data *dat, t_dlist *min)
+{
+	t_dlist	*ptr;
+	int		steps;
+	int		len;
+
+	steps = 0;
+	ptr = dat->a;
+	len = dlist_count(dat->a);
+	while (!correct_loc(ptr, dat->b, min))
+	{
+		steps++;
+		ptr = ptr->next;
+	}
+	rotate_exec(dat, steps, len);
 }
