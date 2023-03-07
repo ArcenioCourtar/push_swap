@@ -8,13 +8,16 @@ OBJFILES	:=	main.o \
 			dlist.o \
 			input_validation.o \
 			operations.o \
-			operations_helper.o \
+			operations_2.o \
 			print_oper.o \
 			sorting.o \
 			sort_small.o \
 			rot_calc.o \
 			sort_big.o \
-			lis.o
+			sort_big_2.o \
+			sort_big_3.o \
+			lis.o \
+			lis_2.o
 HEADERFILE	:=	push_swap.h
 
 all: $(NAME)
