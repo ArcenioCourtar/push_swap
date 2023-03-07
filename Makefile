@@ -8,15 +8,14 @@ OBJFILES	:=	main.o \
 			dlist.o \
 			input_validation.o \
 			operations.o \
+			operations_helper.o \
 			print_oper.o \
 			sorting.o \
 			sort_small.o \
 			rot_calc.o \
 			sort_big.o \
 			lis.o
-HEADERFILES	:=	push_swap.h \
-			print_oper.h \
-			sorting.h
+HEADERFILE	:=	push_swap.h
 
 all: $(NAME)
 
@@ -33,7 +32,7 @@ fclean:
 	$(MAKE) fclean -C libft
 	rm -f $(OBJFILES) $(NAME)
 
-ft_%.o: ft_%.c $(HEADERFILES)
+ft_%.o: ft_%.c $(HEADERFILE)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 $(LIBFT):

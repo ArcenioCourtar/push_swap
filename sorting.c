@@ -6,12 +6,16 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:44:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/01 13:18:48 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:02:33 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "sorting.h"
+
+void	sort_two(t_data *dat);
+void	sort_three(t_data *dat);
+void	sort_five(t_data *dat, int len);
+void	sort_big(t_data *dat);
 
 int	is_sorted(t_dlist *a)
 {

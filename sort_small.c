@@ -6,12 +6,11 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:40:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/01 12:30:21 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:02:27 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "sorting.h"
 
 void	sort_two(t_data *dat)
 {

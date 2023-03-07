@@ -6,12 +6,11 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:16:58 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/01 16:35:49 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:02:05 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "sorting.h"
 
 static t_dlist	*ptr_to_prev(t_dlist *trav)
 {

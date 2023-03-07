@@ -6,36 +6,14 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 17:17:28 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:56:31 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "print_oper.h" // separate header for the print_oper() function
 
-// All functions but one in this file are static since I exclusively use the
-// oper_select() function to gain access to all of them.
-
-static void	oper_swap_helper(t_dlist **list)
-{
-	t_dlist	*array[4];
-	t_dlist	*first;
-	t_dlist	*second;
-
-	first = (*list);
-	second = (*list)->next;
-	array[0] = first->prev;
-	array[1] = second->prev;
-	array[2] = first->next;
-	array[3] = second->next;
-	first->prev = array[2];
-	second->prev = array[0];
-	first->next = array[3];
-	second->next = array[1];
-	first->next->prev = first;
-	second->prev->next = second;
-	(*list) = second;
-}
+void	oper_swap_helper(t_dlist **list);
+void	oper_push_helper(t_dlist **src, t_dlist **dest);
 
 // Swap the first two elements in a list.
 // Select which list based on mode.
@@ -83,7 +61,6 @@ static void	oper_rot(t_data *dat, int mode)
 // TODO: make separate C file for helper functions.
 static void	oper_push(t_data *dat, int mode)
 {
-	t_dlist	*move_this;
 	t_dlist	**src;
 	t_dlist	**dest;
 
@@ -100,19 +77,7 @@ static void	oper_push(t_data *dat, int mode)
 	}
 	if (*src == NULL)
 		return ;
-	move_this = *src;
-	if ((*src)->next == *src)
-	{
-		dlist_add(dest, move_this);
-		*src = NULL;
-	}
-	else
-	{
-		(*src)->next->prev = (*src)->prev;
-		(*src)->prev->next = (*src)->next;
-		*src = (*src)->next;
-		dlist_add(dest, move_this);
-	}
+	oper_push_helper(src, dest);
 }
 
 // Select which of the above four operations is to be executed

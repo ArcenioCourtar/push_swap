@@ -6,12 +6,13 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:36:49 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 12:33:42 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:02:22 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "sorting.h"
+
+void	lis(t_dlist **a);
 
 // might be able to improve this by comparing pairs to the lis
 // members surrounding them, and swapping them if it results 
@@ -188,7 +189,5 @@ void	sort_big(t_data *dat)
 	initial_push(dat, &min);
 	new_sort(&dat, &min);
 	while (!is_sorted(dat->a))
-	{
 		rotate_calc(dat, NULL);
-	}
 }

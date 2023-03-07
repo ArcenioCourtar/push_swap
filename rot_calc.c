@@ -6,12 +6,11 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:52:35 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/01 17:36:04 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:02:17 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "sorting.h"
 
 int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *min)
 {
