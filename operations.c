@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 14:56:31 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:53:08 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,14 @@ void	oper_select(t_data *dat, int mode)
 		oper_push(dat, mode);
 	else if (mode == ROT_A || mode == ROT_B || mode == RROT_A || mode == RROT_B)
 		oper_rot(dat, mode);
+	else if (mode == ROT_R)
+	{
+		oper_rot(dat, ROT_A);
+		oper_rot(dat, ROT_B);
+	}
+	else if (mode == RROT_R)
+	{
+		oper_rot(dat, RROT_A);
+		oper_rot(dat, RROT_B);
+	}
 }
