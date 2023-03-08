@@ -6,14 +6,14 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:00:35 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 13:02:20 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:16:26 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h> // write, STDOUT_FILENO
 #include "push_swap.h"
 
-static void	print_oper_helper(int mode)
+void	print_oper_helper(int mode)
 {
 	if (mode == SWAP_A)
 		write(STDOUT_FILENO, "sa\n", 3);

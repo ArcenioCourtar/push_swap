@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 17:53:08 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:17:09 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,34 @@
 
 void	oper_swap_helper(t_dlist **list);
 void	oper_push_helper(t_dlist **src, t_dlist **dest);
+void	print_oper_helper(int mode);
 
 // Swap the first two elements in a list.
 // Select which list based on mode.
 static void	oper_swap(t_data *dat, int mode)
 {
-	t_dlist	**list;
+	t_dlist		**list;
 
-	oper_add(dat, mode);
-	if (mode == SWAP_A)
-		list = &(dat->a);
-	else
-		list = &(dat->a);
-	if (*list == NULL || dlist_count(*list) == 1)
-		return ;
-	if (dlist_count(*list) == 2)
+	print_oper_helper(mode);
+	while (1)
 	{
-		(*list) = (*list)->next;
-		return ;
+		if (mode == SWAP_A || mode == SWAP_S)
+			list = &(dat->a);
+		else
+			list = &(dat->b);
+		if (*list == NULL || dlist_count(*list) == 1)
+			return ;
+		if (dlist_count(*list) == 2)
+			(*list) = (*list)->next;
+		else
+			oper_swap_helper(list);
+		if (mode == SWAP_S)
+		{
+			mode = SWAP_B;
+			continue ;
+		}
+		break ;
 	}
-	oper_swap_helper(list);
 }
 
 // Rotate elements in the list.
@@ -42,19 +50,30 @@ static void	oper_swap(t_data *dat, int mode)
 // RROT = last elem becomes first.
 static void	oper_rot(t_data *dat, int mode)
 {
-	t_dlist	**list;
+	t_dlist		**list;
+	static int	both = 0;
 
-	oper_add(dat, mode);
-	if (mode == ROT_A || mode == RROT_A)
-		list = &(dat->a);
-	else
-		list = &(dat->b);
-	if (*list == NULL)
-		return ;
-	if (mode == ROT_A || mode == ROT_B)
-		*list = (*list)->next;
-	else
-		*list = (*list)->prev;
+	print_oper_helper(mode);
+	if (mode == ROT_R || mode == RROT_R)
+		both = 1;
+	while (1)
+	{
+		if (mode == ROT_A || mode == RROT_A || mode == ROT_R || mode == RROT_R)
+			list = &(dat->a);
+		else
+			list = &(dat->b);
+		if (mode == ROT_A || mode == ROT_B || mode == ROT_R)
+			*list = (*list)->next;
+		else
+			*list = (*list)->prev;
+		if (both == 1)
+		{
+			mode--;
+			both = 0;
+			continue ;
+		}
+		break ;
+	}
 }
 
 // Move the first element of list "src" to list "dest"
@@ -64,7 +83,7 @@ static void	oper_push(t_data *dat, int mode)
 	t_dlist	**src;
 	t_dlist	**dest;
 
-	oper_add(dat, mode);
+	print_oper_helper(mode);
 	if (mode == PUSH_A)
 	{
 		src = &(dat->b);
@@ -83,20 +102,11 @@ static void	oper_push(t_data *dat, int mode)
 // Select which of the above four operations is to be executed
 void	oper_select(t_data *dat, int mode)
 {
-	if (mode == SWAP_A || mode == SWAP_B)
+	if (mode == SWAP_A || mode == SWAP_B || mode == SWAP_S)
 		oper_swap(dat, mode);
 	else if (mode == PUSH_A || mode == PUSH_B)
 		oper_push(dat, mode);
-	else if (mode == ROT_A || mode == ROT_B || mode == RROT_A || mode == RROT_B)
+	else if (mode == ROT_A || mode == ROT_B || mode == RROT_A \
+	|| mode == RROT_B || mode == ROT_R || mode == RROT_R)
 		oper_rot(dat, mode);
-	else if (mode == ROT_R)
-	{
-		oper_rot(dat, ROT_A);
-		oper_rot(dat, ROT_B);
-	}
-	else if (mode == RROT_R)
-	{
-		oper_rot(dat, RROT_A);
-		oper_rot(dat, RROT_B);
-	}
 }
