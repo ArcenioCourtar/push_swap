@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:14:47 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/08 16:17:22 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:07:52 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,33 @@ static void	initial_push(t_data *dat, t_dlist **min)
 		}
 		else
 			oper_select(dat, PUSH_B);
+	}
+}
+
+void	sort_new(t_data **dat, t_dlist **min)
+{
+	t_dlist	*curr;
+	t_dlist	*shortptr;
+	int		low;
+	int		steptmp;
+
+	while ((*dat)->b != NULL)
+	{
+		low = 0;
+		curr = (*dat)->b;
+		while (1)
+		{
+			// func calculating shortest instruction sequence for curr location
+			if (low == 0 || steptmp < low)
+			{
+				low = steptmp;
+				shortptr = curr;
+			}
+			curr = curr->next;
+			if (curr == (*dat)->b)
+				break ;
+		}
+		// func inserting back shortptr
 	}
 }
 

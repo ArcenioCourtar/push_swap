@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:29:11 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 15:46:45 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:08:21 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,37 @@ static int	stepcounter(t_data *dat, t_dlist *curr, t_dlist *min)
 	return (result);
 }
 
-void	sort(t_data **dat, t_dlist **min)
+t_dlist	*sort_part(t_data *dat, t_dlist *min)
 {
 	t_dlist	*curr;
 	t_dlist	*shortptr;
 	int		low;
 	int		steptmp;
 
+	low = 0;
+	curr = dat->b;
+	while (1)
+	{
+		steptmp = stepcounter(dat, curr, min);
+		if (low == 0 || steptmp < low)
+		{
+			low = steptmp;
+			shortptr = curr;
+		}
+		curr = curr->next;
+		if (curr == dat->b)
+			break ;
+	}
+	return (shortptr);
+}
+
+void	sort(t_data **dat, t_dlist **min)
+{
+	t_dlist	*shortptr;
+
 	while ((*dat)->b != NULL)
 	{
-		low = 0;
-		curr = (*dat)->b;
-		while (1)
-		{
-			steptmp = stepcounter((*dat), curr, (*min));
-			if (low == 0 || steptmp < low)
-			{
-				low = steptmp;
-				shortptr = curr;
-			}
-			curr = curr->next;
-			if (curr == (*dat)->b)
-				break ;
-		}
+		shortptr = sort_part((*dat), (*min));
 		ins_back(dat, shortptr, min);
 	}
 }
