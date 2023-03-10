@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:40:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 15:02:27 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:31:19 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,21 @@ void	sort_three(t_data *dat)
 
 static void	sort_five_helper(t_data *dat)
 {
-	t_dlist	*min;
-
-	min = dat->a;
+	dat->min = dat->a;
 	while (dat->b != NULL)
 	{
-		if (dat->b->num < dat->a->num && dat->a == min)
+		if (dat->b->num < dat->a->num && dat->a == dat->min)
 		{
 			oper_select(dat, PUSH_A);
-			min = dat->a;
+			dat->min = dat->a;
 		}
 		else if (dat->b->num < dat->a->num && dat->b->num > dat->a->prev->num)
 			oper_select(dat, PUSH_A);
-		else if (dat->b->num > dat->a->prev->num && dat->a == min)
+		else if (dat->b->num > dat->a->prev->num && dat->a == dat->min)
 			oper_select(dat, PUSH_A);
 		else
 		{
-			rotate_calc(dat, min);
+			rotate_calc(dat, dat->min);
 		}
 	}
 }

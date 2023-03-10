@@ -6,28 +6,28 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:36:49 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/08 17:43:20 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:21:44 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	lis(t_dlist **a);
-void	sort(t_data **dat, t_dlist **min);
+void	sort(t_data *dat);
 
 // might be able to improve this by comparing pairs to the lis
 // members surrounding them, and swapping them if it results 
 // in a larger lis
-static void	initial_push(t_data *dat, t_dlist **min)
+static void	initial_push(t_data *dat)
 {
-	while (dat->a != (*min))
+	while (dat->a != dat->min)
 	{
 		if (dat->a->lis == 1)
 		{
-			if ((*min) == NULL)
-				(*min) = dat->a;
-			else if ((*min)->num > dat->a->num)
-				(*min) = dat->a;
+			if (dat->min == NULL)
+				dat->min = dat->a;
+			else if (dat->min->num > dat->a->num)
+				dat->min = dat->a;
 			oper_select(dat, ROT_A);
 		}
 		else
@@ -38,8 +38,8 @@ static void	initial_push(t_data *dat, t_dlist **min)
 void	sort_big(t_data *dat)
 {
 	lis(&(dat->a));
-	initial_push(dat, &dat->min);
-	sort(&dat, &dat->min);
+	initial_push(dat);
+	sort(dat);
 	while (!is_sorted(dat->a))
 		rotate_calc(dat, NULL);
 }

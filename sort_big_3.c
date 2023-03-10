@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:34:55 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 15:47:47 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:30:25 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,28 @@ static int	correct_loc_min(t_dlist *a, t_dlist *b, t_dlist **min)
 	return (0);
 }
 
-void	ins_back(t_data **dat, t_dlist *shortptr, t_dlist **min)
+void	ins_back(t_data *dat, t_dlist *shortptr)
 {
 	int		steps;
 	int		len;
 	t_dlist	*tmpptr;
 
-	tmpptr = (*dat)->b;
-	len = dlist_count((*dat)->b);
+	tmpptr = dat->b;
+	len = dlist_count(dat->b);
 	steps = 0;
 	while (tmpptr != shortptr)
 	{
 		steps++;
 		tmpptr = tmpptr->next;
 	}
-	rotate_b((*dat), steps, len);
-	tmpptr = (*dat)->a;
-	len = dlist_count((*dat)->a);
+	rotate_b(dat, steps, len);
+	tmpptr = dat->a;
+	len = dlist_count(dat->a);
 	steps = 0;
-	while (!correct_loc_min(tmpptr, (*dat)->b, min))
+	while (!correct_loc_min(tmpptr, dat->b, &(dat->min)))
 	{
 		steps++;
 		tmpptr = tmpptr->next;
 	}
-	rotate_a((*dat), steps, len);
+	rotate_a(dat, steps, len);
 }
