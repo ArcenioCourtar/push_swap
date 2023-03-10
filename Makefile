@@ -13,11 +13,11 @@ OBJFILES	:=	main.o \
 			sorting.o \
 			sort_small.o \
 			rot_calc.o \
-			sort_big.o \
-			sort_big_2.o \
-			sort_big_3.o \
+			sort_big_new.o \
 			lis.o \
-			lis_2.o
+			lis_2.o 
+# sort_big_2.o \
+sort_big_3.o
 HEADERFILE	:=	push_swap.h
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/08 17:17:09 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:36:12 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	oper_swap(t_data *dat, int mode)
 {
 	t_dlist		**list;
 
-	print_oper_helper(mode);
+	// print_oper_helper(mode);
 	while (1)
 	{
 		if (mode == SWAP_A || mode == SWAP_S)
@@ -53,7 +53,7 @@ static void	oper_rot(t_data *dat, int mode)
 	t_dlist		**list;
 	static int	both = 0;
 
-	print_oper_helper(mode);
+	// print_oper_helper(mode);
 	if (mode == ROT_R || mode == RROT_R)
 		both = 1;
 	while (1)
@@ -83,7 +83,7 @@ static void	oper_push(t_data *dat, int mode)
 	t_dlist	**src;
 	t_dlist	**dest;
 
-	print_oper_helper(mode);
+	// print_oper_helper(mode);
 	if (mode == PUSH_A)
 	{
 		src = &(dat->b);
