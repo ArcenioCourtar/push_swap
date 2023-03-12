@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:29:23 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/08 12:26:43 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:12:46 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,20 @@ static int	is_nonum(int argc, char **argv)
 	return (0);
 }
 
-// checks for duplicate numbers and int over/underflow
-// NOTE: what happens when the long overflows?
-// Maybe add a strlen check as well?
+// Checks for duplicate numbers and int over/underflow
+// Also checks if strlen of an arg isn't higher than 11.
+// To avoid overflowing a long and getting back into int range or something.
 static int	isdupe_isoverflow(int argc, char **argv)
 {
 	long	cmp;
 	int		i;
+	int		len;
 
 	while (argc > 0)
 	{
+		len = ft_strlen(argv[argc]);
+		if (len > 11)
+			return (1);
 		cmp = ft_atol(argv[argc]);
 		if (cmp > INT_MAX || cmp < INT_MIN)
 			return (1);

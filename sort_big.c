@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:14:47 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/12 17:30:00 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:13:07 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	lis(t_dlist **a);
 void	calc_fastest(t_data *dat, int arr[5]);
 void	exec_oper(t_data *dat, int arr[5]);
 
+// push everything not marked as part of the lis to b
 static void	initial_push(t_data *dat)
 {
 	while (dat->a != dat->min)
@@ -33,6 +34,10 @@ static void	initial_push(t_data *dat)
 	}
 }
 
+// This array (and everything like it in the following files) has this format:
+// arr[0]: ra, [1]: rra, [2]: rb, [3]: rrb, [4]: lowest # of moves
+// First calculates the fastest set of moves to move somthing from b to a.
+// Then executes the moves stored in the array, loop until stack b is empty.
 static void	ins_back(t_data *dat)
 {
 	int		arr[5];
@@ -45,6 +50,10 @@ static void	ins_back(t_data *dat)
 	}
 }
 
+// Sorting alg used for more than 5 elements.
+// First calculate the Longest Increasing Subsequence,
+// Push everything not part of the LIS to b
+// Insert everything back into a and get the starting value on top.
 void	sort_big(t_data *dat)
 {
 	lis(&(dat->a));

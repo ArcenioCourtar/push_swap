@@ -6,7 +6,7 @@
 #    By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/12 16:43:02 by acourtar          #+#    #+#              #
-#    Updated: 2023/03/12 17:25:23 by acourtar         ###   ########.fr        #
+#    Updated: 2023/03/12 18:26:31 by acourtar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ LIBFT		:=	libft/libft.a
 CFLAGS		:=	-Wall -Werror -Wextra
 NAME		:=	push_swap
 OBJFILES	:=	main.o \
-			data.o \
 			dlist.o \
 			input_validation.o \
 			operations.o \

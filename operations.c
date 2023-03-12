@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:12:26 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/12 17:23:19 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:53:05 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static void	oper_rot(t_data *dat, int mode)
 }
 
 // Move the first element of list "src" to list "dest"
-// TODO: make separate C file for helper functions.
 static void	oper_push(t_data *dat, int mode)
 {
 	t_dlist	**src;

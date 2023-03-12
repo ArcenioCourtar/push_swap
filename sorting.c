@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:44:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/12 16:40:37 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:29:05 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	sort_three(t_data *dat);
 void	sort_five(t_data *dat, int len);
 void	sort_big(t_data *dat);
 
+// Checks if the list is already sorted
 int	is_sorted(t_dlist *a)
 {
 	t_dlist	*start;
@@ -35,6 +36,7 @@ int	is_sorted(t_dlist *a)
 	return (1);
 }
 
+// Select sort based on length of the input list.
 void	select_sort(t_data *dat)
 {
 	int	len;

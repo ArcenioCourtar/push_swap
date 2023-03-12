@@ -6,18 +6,21 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:40:42 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/10 13:31:19 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:28:18 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// If the first number is higher than the second, swap em. :)
 void	sort_two(t_data *dat)
 {
 	if (dat->a->num > dat->a->next->num)
 		oper_select(dat, SWAP_A);
 }
 
+// there are six possible permutations for 3 different numbers, and each can be
+// done in at most two moves.
 void	sort_three(t_data *dat)
 {
 	int	num[3];
@@ -46,6 +49,7 @@ void	sort_three(t_data *dat)
 	}
 }
 
+// Figures out where the top number in b needs to be inside of a, then moves.
 static void	sort_five_helper(t_data *dat)
 {
 	dat->min = dat->a;
@@ -67,6 +71,10 @@ static void	sort_five_helper(t_data *dat)
 	}
 }
 
+// For the sorting of five (and four!) numbers, I first push numbers to b
+// until I have only three numbers left in a.
+// Then I just perform the hardcoed solution for 3 numbers, followed by
+// inserting the other numbers back in with the helper function.
 void	sort_five(t_data *dat, int len)
 {
 	while (len > 3)

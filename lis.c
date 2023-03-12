@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:16:58 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 15:26:23 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:40:27 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	create_stack(t_dlist *start, t_dlist *curr);
 
+// After the longest LIS has been found it marks all nodes that are part of
+// the LIS so the sorting algorithm can use that information.
 static void	mark_lis(t_dlist **a)
 {
 	t_dlist	*trav;
@@ -30,6 +32,8 @@ static void	mark_lis(t_dlist **a)
 	}
 }
 
+// Traverses the LIS and compares it to the previously found longest LIS.
+// If the LIS for the current starting index is longer is returns 1.
 static int	longest_lis(t_dlist *start)
 {
 	static int	maxlen = 0;
@@ -51,6 +55,8 @@ static int	longest_lis(t_dlist *start)
 	return (0);
 }
 
+// Set all ptrs back to NULL after going through the entire list for
+// startig index a
 static void	clearptrs(t_dlist **a)
 {
 	t_dlist	*pos;
@@ -72,6 +78,9 @@ static void	clearptrs(t_dlist **a)
 	(pos)->lisptr = NULL;
 }
 
+// Generate the Longest Increasing Subsequence using patience sort.
+// Saves the node at which the LIS is found and marks all of the LIS members
+// at the end.
 void	lis(t_dlist **a)
 {
 	t_dlist	*start;

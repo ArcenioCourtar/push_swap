@@ -6,13 +6,14 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:00:35 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/12 17:24:37 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:03:16 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h> // write, STDOUT_FILENO
 #include "push_swap.h"
 
+// It prints the operations. :)
 void	print_oper(int mode)
 {
 	if (mode == SWAP_A)

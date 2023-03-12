@@ -6,12 +6,13 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:59:13 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/12 17:28:50 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:07:03 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// ra + rrb rotation
 static void	ra_rot(t_data *dat, int a, int b)
 {
 	while (a > 0)
@@ -29,6 +30,7 @@ static void	ra_rot(t_data *dat, int a, int b)
 	oper_select(dat, PUSH_A);
 }
 
+// rra + rb rotation
 static void	rb_rot(t_data *dat, int a, int b)
 {
 	while (a > 0)
@@ -46,6 +48,7 @@ static void	rb_rot(t_data *dat, int a, int b)
 	oper_select(dat, PUSH_A);
 }
 
+// rr rotation
 static void	rr_rot(t_data *dat, int a, int b)
 {
 	while (a > 0 || b > 0)
@@ -72,6 +75,7 @@ static void	rr_rot(t_data *dat, int a, int b)
 	oper_select(dat, PUSH_A);
 }
 
+// rrr rotation
 static void	rrr_rot(t_data *dat, int a, int b)
 {
 	while (a > 0 || b > 0)
@@ -98,7 +102,8 @@ static void	rrr_rot(t_data *dat, int a, int b)
 	oper_select(dat, PUSH_A);
 }
 
-// RA, RRA, RB, RRB, MIN
+// Select whichever operation to perform based on the operation count stored in
+// the array.
 void	exec_oper(t_data *dat, int arr[5])
 {
 	if (arr[0] < arr[4] && arr[2] < arr[4])

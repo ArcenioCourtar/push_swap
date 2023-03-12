@@ -6,12 +6,13 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:52:35 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 15:02:17 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:05:25 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Checks if pushing node b in that position in a would be correct.
 int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *min)
 {
 	if (b == NULL && is_sorted(a))
@@ -28,6 +29,7 @@ int	correct_loc(t_dlist *a, t_dlist *b, t_dlist *min)
 	return (0);
 }
 
+// Execute optimal rotation direction.
 static void	rotate_exec(t_data *dat, int steps, int len)
 {
 	if (steps > len / 2)
@@ -48,6 +50,8 @@ static void	rotate_exec(t_data *dat, int steps, int len)
 	}
 }
 
+// Calculate number of rotation needed to get en already sorted list in the
+// correct location.
 void	rotate_calc(t_data *dat, t_dlist *min)
 {
 	t_dlist	*ptr;
