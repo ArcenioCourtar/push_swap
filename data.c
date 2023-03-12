@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:05:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 14:27:53 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:17:52 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	exit_func(t_data **dat)
 		dlist_pop(&((*dat)->a));
 	while ((*dat)->b != NULL)
 		dlist_pop(&((*dat)->b));
-	while ((*dat)->op != NULL)
-		dlist_pop(&((*dat)->op));
 	free(*dat);
 	exit(EXIT_SUCCESS);
 }

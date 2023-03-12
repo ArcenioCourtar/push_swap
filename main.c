@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:49:55 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/08 17:17:54 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:16:45 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ int	main(int argc, char **argv)
 
 	valid_input(argc, argv);
 	dat = fill_list(argc - 1, argv);
-	select_sort(dat);
+	if (!is_sorted(dat->a))
+		select_sort(dat);
+	exit_func(&dat);
 }

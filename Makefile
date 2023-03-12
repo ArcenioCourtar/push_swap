@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/12 16:43:02 by acourtar          #+#    #+#              #
+#    Updated: 2023/03/12 17:00:16 by acourtar         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC			:=	cc
 LIBFT		:=	libft/libft.a
 CFLAGS		:=	-Wall -Werror -Wextra
@@ -13,11 +25,11 @@ OBJFILES	:=	main.o \
 			sorting.o \
 			sort_small.o \
 			rot_calc.o \
-			sort_big_new.o \
+			sort_big.o \
+			sort_big_2.o \
+			sort_big_3.o \
 			lis.o \
-			lis_2.o 
-# sort_big_2.o \
-sort_big_3.o
+			lis_2.o
 HEADERFILE	:=	push_swap.h
 
 all: $(NAME)
