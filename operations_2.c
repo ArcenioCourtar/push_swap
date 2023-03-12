@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_helper.c                                :+:      :+:    :+:   */
+/*   operations_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 13:39:05 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/07 15:18:26 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:27:28 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// Extra file to fulfill the Norm's 5 function per file limit
 
 void	oper_swap_helper(t_dlist **list)
 {

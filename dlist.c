@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:07:06 by acourtar          #+#    #+#             */
-/*   Updated: 2023/02/28 17:54:18 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:22:30 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,8 @@ void	dlist_add(t_dlist **list, t_dlist *new)
 	*list = new;
 }
 
-void	dlist_add_oper(t_dlist **list, t_dlist *new)
-{
-	if (*list == NULL)
-	{
-		new->next = new;
-		new->prev = new;
-		*list = new;
-		return ;
-	}
-	new->next = *list;
-	new->prev = (*list)->prev;
-	(*list)->prev->next = new;
-	(*list)->prev = new;
-}
-
 // Remove the current first element from the list, by pointing the 
 // elements around it to each other. Then free the first element.
-// NOTE: Might not be needed with my new implementation.
 void	dlist_pop(t_dlist **list)
 {
 	t_dlist	*old_head;
@@ -103,4 +87,23 @@ int	dlist_count(t_dlist *list)
 		}
 		return (i);
 	}
+}
+
+// View list elements in order.
+void	dlist_view(t_dlist *list)
+{
+	t_dlist	*start;
+
+	if (list == NULL)
+	{
+		write(STDOUT_FILENO, "(null)\n\n", 8);
+		return ;
+	}
+	start = list;
+	while (start != list->next)
+	{
+		ft_printf("%i\n", list->num);
+		list = list->next;
+	}
+	ft_printf("%i\n\n", list->num);
 }

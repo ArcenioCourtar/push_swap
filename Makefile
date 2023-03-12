@@ -6,7 +6,7 @@
 #    By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/12 16:43:02 by acourtar          #+#    #+#              #
-#    Updated: 2023/03/12 17:00:16 by acourtar         ###   ########.fr        #
+#    Updated: 2023/03/12 17:25:23 by acourtar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ CFLAGS		:=	-Wall -Werror -Wextra
 NAME		:=	push_swap
 OBJFILES	:=	main.o \
 			data.o \
-			debug_func.o \
 			dlist.o \
 			input_validation.o \
 			operations.o \

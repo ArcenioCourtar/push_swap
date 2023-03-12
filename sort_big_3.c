@@ -6,13 +6,13 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:59:13 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/12 17:06:33 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:28:50 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra_rot(t_data *dat, int a, int b)
+static void	ra_rot(t_data *dat, int a, int b)
 {
 	while (a > 0)
 	{
@@ -29,7 +29,7 @@ void	ra_rot(t_data *dat, int a, int b)
 	oper_select(dat, PUSH_A);
 }
 
-void	rb_rot(t_data *dat, int a, int b)
+static void	rb_rot(t_data *dat, int a, int b)
 {
 	while (a > 0)
 	{
@@ -46,7 +46,7 @@ void	rb_rot(t_data *dat, int a, int b)
 	oper_select(dat, PUSH_A);
 }
 
-void	rr_rot(t_data *dat, int a, int b)
+static void	rr_rot(t_data *dat, int a, int b)
 {
 	while (a > 0 || b > 0)
 	{
@@ -72,7 +72,7 @@ void	rr_rot(t_data *dat, int a, int b)
 	oper_select(dat, PUSH_A);
 }
 
-void	rrr_rot(t_data *dat, int a, int b)
+static void	rrr_rot(t_data *dat, int a, int b)
 {
 	while (a > 0 || b > 0)
 	{

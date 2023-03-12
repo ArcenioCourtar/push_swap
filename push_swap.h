@@ -6,7 +6,7 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:50:27 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/08 17:23:44 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:24:35 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct data {
 	struct dlist	*min;
 	struct dlist	*a;
 	struct dlist	*b;
-	struct dlist	*op;
 }	t_data;
 
 typedef struct dlist {
@@ -69,7 +68,7 @@ void	dlist_view(t_dlist *list);
 
 void	oper_select(t_data *dat, int mode);
 
-void	print_oper(t_dlist *oper);
+void	print_oper(int mode);
 
 void	select_sort(t_data *dat);
 

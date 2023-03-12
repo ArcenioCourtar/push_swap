@@ -6,14 +6,14 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:00:35 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/08 17:16:26 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:24:37 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h> // write, STDOUT_FILENO
 #include "push_swap.h"
 
-void	print_oper_helper(int mode)
+void	print_oper(int mode)
 {
 	if (mode == SWAP_A)
 		write(STDOUT_FILENO, "sa\n", 3);
@@ -37,38 +37,4 @@ void	print_oper_helper(int mode)
 		write(STDOUT_FILENO, "rrb\n", 4);
 	else if (mode == RROT_R)
 		write(STDOUT_FILENO, "rrr\n", 4);
-}
-
-void	print_oper(t_dlist *oper)
-{
-	t_dlist	*start;
-
-	if (oper == NULL)
-		return ;
-	start = oper;
-	while (start != oper->next)
-	{
-		print_oper_helper(oper->num);
-		oper = oper->next;
-	}
-	print_oper_helper(oper->num);
-}
-
-void	oper_add(t_data *dat, int mode)
-{
-	t_dlist	*add;
-
-	if (dat->op == NULL)
-	{
-		dat->op = dlist_new(mode);
-		if (dat->op == NULL)
-			exit_func(&dat);
-	}
-	else
-	{
-		add = dlist_new(mode);
-		if (add == NULL)
-			exit_func(&dat);
-		dlist_add_oper(&(dat->op), add);
-	}
 }

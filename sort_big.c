@@ -6,27 +6,15 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:14:47 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/12 17:07:04 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:30:00 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	lis(t_dlist **a);
-void	calc_fastest(t_data *dat, int orig_arr[5]);
+void	calc_fastest(t_data *dat, int arr[5]);
 void	exec_oper(t_data *dat, int arr[5]);
-
-void	ins_back(t_data *dat)
-{
-	int		orig_arr[5];
-
-	while (dat->b != NULL)
-	{
-		orig_arr[4] = 0;
-		calc_fastest(dat, orig_arr);
-		exec_oper(dat, orig_arr);
-	}
-}
 
 static void	initial_push(t_data *dat)
 {
@@ -42,6 +30,18 @@ static void	initial_push(t_data *dat)
 		}
 		else
 			oper_select(dat, PUSH_B);
+	}
+}
+
+static void	ins_back(t_data *dat)
+{
+	int		arr[5];
+
+	while (dat->b != NULL)
+	{
+		arr[4] = 0;
+		calc_fastest(dat, arr);
+		exec_oper(dat, arr);
 	}
 }
 
