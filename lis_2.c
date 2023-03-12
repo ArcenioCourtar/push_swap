@@ -6,13 +6,13 @@
 /*   By: acourtar <acourtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:24:15 by acourtar          #+#    #+#             */
-/*   Updated: 2023/03/12 18:52:39 by acourtar         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:41:26 by acourtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// finds the most recent addition of the previous stack, so the
+// Finds the most recent addition of the previous stack, so the
 // new addition in the next stack can create a ptr to it.
 static t_dlist	*ptr_to_prev(t_dlist *trav)
 {
@@ -66,7 +66,6 @@ static void	new_stack(t_dlist **curr, t_dlist **trav)
 	(*curr)->lisptr = ptr_to_prev(*trav);
 }
 
-// (refactor?)
 // Goes through the entire stack to generate the patience sort stacks.
 // It traverse through all already existing stacks until it either 
 // finds the first location it can fit in, or creates a new stack when 
