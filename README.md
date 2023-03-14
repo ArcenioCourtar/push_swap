@@ -2,9 +2,9 @@
 My submission for the push_swap project, part of the curriculum of Codam, and other schools part of the 42 Network.
 
 My solution revolves around finding the Longest Increasing Subsequence (LIS for short) within the supplied list with a Patience Sort. 
-It then pushes everything that's not part of the LIS gtom `a` to `b` and calculates the quickest way to get all elements back into `b`, one element at a time.
+It then pushes everything that's not part of the LIS from `a` to `b` and calculates the quickest way to get all elements back into `a`, one element at a time.
 
-100 random numbers take around 520-610 instructions to put in order.
+100 random numbers take around 520-610 instructions to put in order.  
 500 random numbers take around 4800-5300 instructions.
 
 # Possible optimizations:
