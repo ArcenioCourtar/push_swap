@@ -29,7 +29,7 @@ static t_data	*data_new(void)
 // Otherwise, frees the allocated memory but does not exit(); (err == 0) 
 void	exit_func(t_data **dat, int err)
 {
-	while ((*dat)->a != NULL)
+	while ((*dat) != NULL && (*dat)->a != NULL)
 		dlist_pop(&((*dat)->a));
 	free(*dat);
 	if (err == 1)
